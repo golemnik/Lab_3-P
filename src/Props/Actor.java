@@ -32,17 +32,21 @@ public class Actor extends Entity {
         this.position = position;
     }
 
+    @Override
     public void addAction (Action action) {
         this.action = action;
     }
 
+    @Override
     public void addAmount (int amount) {
         this.amount = new Pieces(amount);
     }
+    @Override
+    public void addPosition (Position newPosition) {
+        this.position = newPosition;
+    }
+    @Override
     public String text () {
         return this.amount.amount() + " " + this.getName() + " " + this.position.place() + " " + this.action.act();
     }
-
-
-
 }
