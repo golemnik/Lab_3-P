@@ -1,21 +1,21 @@
 package Props;
 
-import action.Action;
-import action.GeneralAction;
-import amount.Pieces;
-import position.AbsolutePosition;
-import amount.Amount;
-import position.Position;
+import Status.*;
+import action.*;
+import amount.*;
+import position.*;
 
 public class Actor extends Entity {
     Position position;
     Amount amount;
     Action action;
+    Status status;
 
     {
         position = new AbsolutePosition();
         amount = new Pieces();
         action = new GeneralAction();
+        status = new GeneralStatus();
     }
     public Actor() {
         super();
@@ -33,6 +33,11 @@ public class Actor extends Entity {
     }
 
     @Override
+    public String fullName () {
+        return getName();
+    }
+
+    @Override
     public void addAction (Action action) {
         this.action = action;
     }
@@ -46,7 +51,12 @@ public class Actor extends Entity {
         this.position = newPosition;
     }
     @Override
+    public void addStatus (Status status) {
+        this.status = status;
+    }
+
+    @Override
     public String text () {
-        return this.amount.amount() + " " + this.getName() + " " + this.position.place() + " " + this.action.act();
+        return this.amount.amount() + " " + this.getName() + "" + this.status.stat() + " " + this.position.place() + " " + this.action.act();
     }
 }

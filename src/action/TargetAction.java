@@ -4,22 +4,31 @@ import Props.Entity;
 
 public class TargetAction extends AbstractAction implements Action{
 
-    private Entity target;
-    private String actMove;
+    private Entity target[];
+    private String prepos;
 
-    public TargetAction (Entity target, String actMove) {
+    public TargetAction (String actMove, Entity ... target) {
         super("взаимодействует");
         this.target = target;
-        this.actMove = actMove;
+        this.prepos = actMove;
     }
-    public TargetAction (String name, Entity target, String actMove) {
+    public TargetAction (String name, String actMove, Entity ... target) {
         super(name);
         this.target = target;
-        this.actMove = actMove;
+        this.prepos = actMove;
+    }
+
+    private String fullName () {
+        String fullName = "";
+        for (int i = 0; i < target.length; i++) {
+            fullName += target[i].text();
+            if (i+1 != target.length) fullName += " и ";
+        }
+        return fullName;
     }
 
     @Override
     public String act () {
-        return this.getName() + " " + actMove + " " + target.getName();
+        return this.getName() + " " + prepos + " " + fullName();
     }
 }

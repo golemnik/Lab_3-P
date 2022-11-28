@@ -24,7 +24,8 @@ public class ComplexActor extends Actor {
         this.parts = parts;
     }
 
-    private String fullName () {
+    @Override
+    public String fullName () {
         String fullName = "";
         for (int i = 0; i < parts.length; i++) {
             fullName += parts[i].getName();

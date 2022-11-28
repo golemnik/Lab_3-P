@@ -8,24 +8,24 @@ public class ObjToTargetAction extends AbstractAction implements Action{
 
     private Entity target;
     private Entity[] objects;
-    private String actMove;
+    private String prepos;
 
     public ObjToTargetAction (Entity target, String actMove, Actor ... objects) {
         super("взаимодействует");
         this.target = target;
-        this.actMove = actMove;
+        this.prepos = actMove;
         this.objects = objects;
     }
     public ObjToTargetAction (String name, Entity target, String actMove, Entity ... objects) {
         super(name);
         this.target = target;
-        this.actMove = actMove;
+        this.prepos = actMove;
         this.objects = objects;
     }
 
     private void updateObjects () {
         for (int i = 0; i < objects.length; i++) {
-            objects[i].addPosition(new RelativePosition(target, actMove));
+            objects[i].addPosition(new RelativePosition(target, prepos));
             objects[i].addAction(new GeneralAction());
         }
     }
@@ -42,6 +42,6 @@ public class ObjToTargetAction extends AbstractAction implements Action{
 
     @Override
     public String act () {
-        return this.getName() + " " + fullName() + " " + actMove + " " + target.getName();
+        return this.getName() + " " + fullName() + " " + prepos + " " + target.getName();
     }
 }

@@ -1,7 +1,8 @@
-import Props.Actor;
-import Props.ComplexActor;
-import action.ObjToTargetAction;
-import action.TargetAction;
+import Props.*;
+import Reason.*;
+import Status.*;
+import action.*;
+import position.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,7 +19,7 @@ public class Main {
         Actor filifioka = new Actor("Филифьонка");
         Actor clocks = new Actor("часы");
         Actor leaf = new Actor("лист");
-        ComplexActor girliandi = new ComplexActor("гирлянда", leaf);
+        ComplexActor girlianda = new ComplexActor("гирлянда", leaf);
         Actor door = new Actor("дверь");
         Actor sebia = new Actor("себя");
         Actor mirror = new Actor("зеркало");
@@ -30,8 +31,14 @@ public class Main {
 
         she.addAction(new ObjToTargetAction("поставить", table, "на", new Actor[] {plate, cup, flowerPack}));
         scene.addActorText(she);
-        cake.addAction(new TargetAction("стоять", plita, "на"));
+        cake.addAction(new TargetAction("стоять", "на", plita));
+        cake.addStatus(new GeneralStatus("почерневший", new GeneralReason("ожидание", "от")));
         scene.addActorText(cake);
+        girlianda.addPosition(new RelativePosition(door,"над"));
+        clocks.addPosition(new RelativePosition(door, "над"));
+        filifioka.addAction(new TargetAction("взглянуть", "на", new Entity[] {clocks, girlianda}));
+        scene.addActorText(filifioka);
+
 
         scene.play();
     }
