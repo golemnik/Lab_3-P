@@ -1,6 +1,6 @@
-import Props.*;
-import Reason.*;
-import Status.*;
+import props.*;
+import reason.*;
+import status.*;
 import action.*;
 import position.*;
 
@@ -36,9 +36,17 @@ public class Main {
         scene.addActorText(cake);
         girlianda.addPosition(new RelativePosition(door,"над"));
         clocks.addPosition(new RelativePosition(door, "над"));
-        filifioka.addAction(new TargetAction("взглянуть", "на", new Entity[] {clocks, girlianda}));
+        mirror.addAction(new TargetAction("отражать", sebia));
+        arms.addAmount(2);
+        filifioka.addAction(new Action[]{
+                new TargetAction("взглянуть", "на", new Entity[] {clocks, girlianda}),
+                new TargetAction("посмотреть", "на", mirror),
+                new ObjToTargetAction("опереться", table,"о" , arms),
+                new GeneralAction("заплакать")});
         scene.addActorText(filifioka);
-
+        lob.addPosition(new RelativePosition (filifioka, "принадлежать"));
+        kolokolchik.addAction(new TargetAction("съехать", "на", lob));
+        scene.addActorText(kolokolchik);
 
         scene.play();
     }

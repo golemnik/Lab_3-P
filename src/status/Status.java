@@ -1,14 +1,18 @@
-package Status;
+package status;
 
-import Reason.Reason;
+import reason.Reason;
 
 public abstract class Status {
-    String name;
+    private String name;
 
     Status (String name) {
         this.name = name;
     }
     public abstract void addReason (Reason reason);
+
+    public String getName () {
+        return name;
+    }
 
     public abstract String stat ();
 }

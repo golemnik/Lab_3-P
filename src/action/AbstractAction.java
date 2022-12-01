@@ -6,8 +6,9 @@ public abstract class AbstractAction implements Action{
     {
         name = "бездействует";
     }
-    public AbstractAction () {}
+    public AbstractAction () {
 
+    }
     public AbstractAction (String name) {
         this.name = name;
     }

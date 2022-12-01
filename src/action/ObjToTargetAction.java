@@ -1,8 +1,11 @@
 package action;
 
-import Props.Actor;
-import Props.Entity;
+import props.Actor;
+import props.Entity;
 import position.RelativePosition;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 public class ObjToTargetAction extends AbstractAction implements Action{
 
@@ -43,5 +46,28 @@ public class ObjToTargetAction extends AbstractAction implements Action{
     @Override
     public String act () {
         return this.getName() + " " + fullName() + " " + prepos + " " + target.getName();
+    }
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(target, prepos);
+        result = 31 * result + Arrays.hashCode(objects);
+        return result;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ObjToTargetAction that)) return false;
+        return Objects.equals(target, that.target) &&
+                Arrays.equals(objects, that.objects) &&
+                Objects.equals(prepos, that.prepos);
+    }
+
+    @Override
+    public String toString() {
+        return "ObjToTargetAction{" +
+                "target=" + target +
+                ", objects=" + Arrays.toString(objects) +
+                ", prepos='" + prepos + '\'' +
+                '}';
     }
 }

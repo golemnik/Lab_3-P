@@ -1,5 +1,7 @@
-import Props.Actor;
-import Props.ComplexActor;
+import props.Actor;
+import props.ComplexActor;
+
+import java.util.Arrays;
 
 public class Scene {
 
@@ -30,5 +32,23 @@ public class Scene {
         for (int i = 0; i < order.length; i++) {
             System.out.println(order[i] + ".");
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(order);
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Scene scene)) return false;
+        return Arrays.equals(order, scene.order);
+    }
+
+    @Override
+    public String toString() {
+        return "Scene{" +
+                "order=" + Arrays.toString(order) +
+                '}';
     }
 }

@@ -1,7 +1,9 @@
 package position;
 
-import Props.Actor;
-import Props.Entity;
+import props.Actor;
+import props.Entity;
+
+import java.util.Objects;
 
 public class RelativePosition implements Position {
     Entity relativeObject;
@@ -26,5 +28,24 @@ public class RelativePosition implements Position {
     @Override
     public String place (){
         return relativeType + " " + relativeObject.getName();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(relativeObject, relativeType);
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RelativePosition that)) return false;
+        return Objects.equals(relativeObject, that.relativeObject) && Objects.equals(relativeType, that.relativeType);
+    }
+
+    @Override
+    public String toString() {
+        return "RelativePosition{" +
+                "relativeObject=" + relativeObject +
+                ", relativeType='" + relativeType + '\'' +
+                '}';
     }
 }

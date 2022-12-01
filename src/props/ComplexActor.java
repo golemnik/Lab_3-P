@@ -1,6 +1,8 @@
-package Props;
+package props;
 
 import position.Position;
+
+import java.util.Arrays;
 
 public class ComplexActor extends Actor {
     Actor[] parts;
@@ -37,5 +39,31 @@ public class ComplexActor extends Actor {
     @Override
     public String text () {
         return this.amount.amount() + " " + fullName() + " " + this.position.place() + " " + this.action.act();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + Arrays.hashCode(parts);
+        return result;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ComplexActor that)) return false;
+        if (!super.equals(o)) return false;
+        return Arrays.equals(parts, that.parts);
+    }
+
+    @Override
+    public String toString() {
+        return "ComplexActor{" +
+                "parts=" + Arrays.toString(parts) +
+                "position=" + position +
+                ", amount=" + amount +
+                ", action=" + action +
+                ", actions=" + Arrays.toString(actions) +
+                ", status=" + status +
+                '}';
     }
 }
