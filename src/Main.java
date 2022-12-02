@@ -1,11 +1,13 @@
 import props.*;
+import props.Actor;
 import reason.*;
 import status.*;
 import action.*;
 import position.*;
 
 public class Main {
-    public static void main(String[] args) {
+
+    void scene_1 () {
         Scene scene = new Scene();
 
         Actor she = new Actor("Она");
@@ -49,5 +51,8 @@ public class Main {
         scene.addActorText(kolokolchik);
 
         scene.play();
+    }
+    public static void main(String[] args) {
+        Actor a = new Actor();
     }
 }
