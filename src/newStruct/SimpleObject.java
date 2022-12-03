@@ -10,21 +10,25 @@ public class SimpleObject extends AbstrastObject {
     private Action action[];
     private Status status[];
 
-    public void setNames (String ... name) {
+    public SimpleObject () {
+
+    }
+    public void setNames (String [] name) {
         this.name = name;
     }
-    public void setPlaces (Place ... place) {
+    public void setPlaces (Place [] place) {
         this.place = place;
     }
-    public void setActions (Action ... action) {
+    public void setActions (Action [] action) {
         this.action = action;
     }
-    public void setStatus (Status ... status) {
+    public void setStatus (Status [] status) {
         this.status = status;
     }
 
-    String text () {
-        return "";
+    @Override
+    public String text () {
+        return "Simple obj";
     }
 
 

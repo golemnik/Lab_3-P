@@ -5,7 +5,14 @@ import newStruct.SimpleObject;
 public class ComplexObject extends SimpleObject {
     SimpleObject parts [];
 
-    ComplexObject (SimpleObject ... parts) {
+    public ComplexObject () {
+
+    }
+    void setParts (SimpleObject [] parts) {
         this.parts = parts;
+    }
+    @Override
+    public String text () {
+        return "Compl obj";
     }
 }

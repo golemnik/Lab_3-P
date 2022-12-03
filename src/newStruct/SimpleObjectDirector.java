@@ -4,7 +4,7 @@ import newStruct.other.Action;
 import newStruct.other.Place;
 import newStruct.other.Status;
 
-public class ObjectManager {
+public class SimpleObjectDirector {
     public void createObj (ObjBuilder builder) {
         builder.reset();
     }
@@ -51,6 +51,31 @@ public class ObjectManager {
     }
     public void createObj (ObjBuilder builder, Place [] places, Status [] statuses) {
         builder.reset();
+        builder.setObjPlace(places);
+        builder.setObjStatus(statuses);
+    }
+    public void createObj (ObjBuilder builder, String [] names, Action [] actions, Place [] places) {
+        builder.reset();
+        builder.setObjName(names);
+        builder.setObjActions(actions);
+        builder.setObjPlace(places);
+    }
+    public void createObj (ObjBuilder builder, String [] names, Action [] actions, Status [] statuses) {
+        builder.reset();
+        builder.setObjName(names);
+        builder.setObjActions(actions);
+        builder.setObjStatus(statuses);
+    }
+    public void createObj (ObjBuilder builder, String [] names, Place [] places, Status [] statuses) {
+        builder.reset();
+        builder.setObjName(names);
+        builder.setObjPlace(places);
+        builder.setObjStatus(statuses);
+    }
+    public void createObj (ObjBuilder builder, String [] names, Action [] actions, Place [] places, Status [] statuses) {
+        builder.reset();
+        builder.setObjName(names);
+        builder.setObjActions(actions);
         builder.setObjPlace(places);
         builder.setObjStatus(statuses);
     }

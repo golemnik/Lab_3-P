@@ -1,3 +1,4 @@
+import newStruct.*;
 import props.*;
 import props.Actor;
 import reason.*;
@@ -6,7 +7,6 @@ import action.*;
 import position.*;
 
 public class Main {
-
     void scene_1 () {
         Scene scene = new Scene();
 
@@ -53,6 +53,16 @@ public class Main {
         scene.play();
     }
     public static void main(String[] args) {
-        Actor a = new Actor();
+        SimpleObjectDirector obm = new SimpleObjectDirector();
+        SimpleObjBuilder obb = new SimpleObjBuilder();
+        obm.createObj(obb, new String[] { "123"});
+        SimpleObject obj = obb.getObj();
+        System.out.println(obj.text());
+
+        ComplexObjectDirector cobm = new ComplexObjectDirector();
+        ComplexObjBuilder cobb = new ComplexObjBuilder();
+        cobm.createObj(cobb, new SimpleObject[] {obj, obj, obj}, new String[] { "123"});
+        ComplexObject cobj = cobb.getObj();
+        System.out.println(cobj.text());
     }
 }

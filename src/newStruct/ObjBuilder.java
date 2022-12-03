@@ -10,4 +10,5 @@ public interface ObjBuilder {
     public void setObjPlace(Place [] place);
     public void setObjActions(Action [] action);
     public void setObjStatus(Status [] status);
+
 }
