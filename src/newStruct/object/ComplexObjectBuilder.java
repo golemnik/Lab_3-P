@@ -1,11 +1,11 @@
-package newStruct;
+package newStruct.object;
 
 
-import newStruct.other.Action;
+import newStruct.Action;
 import newStruct.other.Place;
 import newStruct.other.Status;
 
-public class ComplexObjBuilder implements CompositeObjBuilder {
+public class ComplexObjectBuilder implements ComplexObjBuilder {
     private ComplexObject obj;
 
     @Override

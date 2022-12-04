@@ -1,4 +1,4 @@
-import newStruct.*;
+import newStruct.object.*;
 import props.*;
 import props.Actor;
 import reason.*;
@@ -54,15 +54,24 @@ public class Main {
     }
     public static void main(String[] args) {
         SimpleObjectDirector obm = new SimpleObjectDirector();
-        SimpleObjBuilder obb = new SimpleObjBuilder();
+        SimpleObjectBuilder obb = new SimpleObjectBuilder();
         obm.createObj(obb, new String[] { "123"});
         SimpleObject obj = obb.getObj();
         System.out.println(obj.text());
 
         ComplexObjectDirector cobm = new ComplexObjectDirector();
-        ComplexObjBuilder cobb = new ComplexObjBuilder();
-        cobm.createObj(cobb, new SimpleObject[] {obj, obj, obj}, new String[] { "123"});
-        ComplexObject cobj = cobb.getObj();
-        System.out.println(cobj.text());
+        ComplexObjectBuilder cobb = new ComplexObjectBuilder();
+        cobm.createObj(cobb,
+                new SimpleObject[] {obj, obj, obj},
+                new String[] { "123"});
+        ComplexObject cobj1 = cobb.getObj();
+
+        cobm.createObj(cobb,
+                new SimpleObject[] {obj, obj, obj},
+                new String[] { "123"},
+                new newStruct.Action[] {    new newStruct.TargetAction(new AbstractObject[]{obj}),
+                                            new newStruct.TargetAction(new AbstractObject[]{cobj1})});
+        ComplexObject cobj2 = cobb.getObj();
+        System.out.println(cobj2.text());
     }
 }

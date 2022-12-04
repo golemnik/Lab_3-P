@@ -1,10 +1,12 @@
-package newStruct;
+package newStruct.object;
 
-import newStruct.other.Action;
+import newStruct.Action;
 import newStruct.other.Place;
 import newStruct.other.Status;
 
-public class SimpleObject extends AbstrastObject {
+import java.util.Arrays;
+
+public class SimpleObject extends AbstractObject {
     private String name[];
     private Place place[];
     private Action action[];
@@ -13,15 +15,19 @@ public class SimpleObject extends AbstrastObject {
     public SimpleObject () {
 
     }
+    @Override
     public void setNames (String [] name) {
         this.name = name;
     }
+    @Override
     public void setPlaces (Place [] place) {
         this.place = place;
     }
+    @Override
     public void setActions (Action [] action) {
         this.action = action;
     }
+    @Override
     public void setStatus (Status [] status) {
         this.status = status;
     }
