@@ -1,9 +1,12 @@
-package newStruct.place;
+package newStruct.status;
 
-public abstract class AbstractPlace {
+import java.security.PublicKey;
+
+public abstract class AbstractStatus {
     private String name;
-    public AbstractPlace () {}
+    public AbstractStatus () {}
 
     public void setName (String name) {this.name = name;}
     public String getName () {return this.name;}
+
 }

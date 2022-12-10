@@ -2,7 +2,7 @@ package newStruct.object;
 
 import newStruct.Action;
 import newStruct.place.Place;
-import newStruct.other.Status;
+import newStruct.status.Status;
 
 public class ComplexObjectDirector {
     public void createObj (ComplexObjBuilder builder, SimpleObject [] objects) {

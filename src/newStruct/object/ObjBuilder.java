@@ -2,7 +2,7 @@ package newStruct.object;
 
 import newStruct.Action;
 import newStruct.place.Place;
-import newStruct.other.Status;
+import newStruct.status.Status;
 
 public interface ObjBuilder {
     public void reset();

@@ -2,7 +2,7 @@ package newStruct.object;
 
 import newStruct.Action;
 import newStruct.place.Place;
-import newStruct.other.Status;
+import newStruct.status.Status;
 
 public class ComplexObject extends AbstractComplexObject {
     private String name[];
@@ -32,6 +32,39 @@ public class ComplexObject extends AbstractComplexObject {
     }
     public void setParts (SimpleObject [] parts) {
         this.parts = parts;
+    }
+
+    @Override
+    public String getFullName () {
+        String fullName = "";
+        for (int i = 0; i < name.length; i++) {
+            fullName += name[i] + " ";
+        }
+        return fullName;
+    }
+    @Override
+    public String getFullPlace () {
+        String fullPlace = "";
+        for (int i = 0; i < place.length; i++) {
+            fullPlace += place[i].loc() + " ";
+        }
+        return fullPlace;
+    }
+    @Override
+    public String getFullAction () {
+        String fullAction = "";
+        for (int i = 0; i < action.length; i++) {
+            fullAction += action[i].act() + " ";
+        }
+        return fullAction;
+    }
+    @Override
+    public String getFullStatus () {
+        String fullStatus = "";
+        for (int i = 0; i < status.length; i++) {
+            fullStatus += status[i].stat() + " ";
+        }
+        return fullStatus;
     }
     @Override
     public String text () {

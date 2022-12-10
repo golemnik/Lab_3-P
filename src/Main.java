@@ -1,4 +1,7 @@
 import newStruct.object.*;
+import newStruct.place.Place;
+import newStruct.place.RelativePlace;
+import newStruct.place.UnknownPlace;
 import props.*;
 import props.Actor;
 import reason.*;
@@ -53,25 +56,15 @@ public class Main {
         scene.play();
     }
     public static void main(String[] args) {
-        SimpleObjectDirector obm = new SimpleObjectDirector();
-        SimpleObjectBuilder obb = new SimpleObjectBuilder();
-        obm.createObj(obb, new String[] { "123"});
-        SimpleObject obj = obb.getObj();
-        System.out.println(obj.text());
-
-        ComplexObjectDirector cobm = new ComplexObjectDirector();
-        ComplexObjectBuilder cobb = new ComplexObjectBuilder();
-        cobm.createObj(cobb,
-                new SimpleObject[] {obj, obj, obj},
-                new String[] { "123"});
-        ComplexObject cobj1 = cobb.getObj();
-
-        cobm.createObj(cobb,
-                new SimpleObject[] {obj, obj, obj},
-                new String[] { "123"},
-                new newStruct.Action[] {    new newStruct.TargetAction(new AbstractObject[]{obj}),
-                                            new newStruct.TargetAction(new AbstractObject[]{cobj1})});
-        ComplexObject cobj2 = cobb.getObj();
-        System.out.println(cobj2.text());
+        SimpleObjectDirector manager = new SimpleObjectDirector();
+        SimpleObjectBuilder builder = new SimpleObjectBuilder();
+        manager.createObj(builder, new String[] { "биба"});
+        SimpleObject biba = builder.getObj();
+        manager.createObj(builder, new String[] { "боба"});
+        SimpleObject boba = builder.getObj();
+        System.out.println(biba.text());
+        biba.setPlaces(new Place[]{new RelativePlace("около", boba)});
+        System.out.println(biba.text());
+        System.out.println(boba.getFullPlace());
     }
 }

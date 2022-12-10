@@ -1,9 +1,11 @@
 package newStruct.object;
 
 import newStruct.Action;
+import newStruct.UnknownAction;
 import newStruct.place.Place;
-import newStruct.other.Status;
+import newStruct.status.Status;
 import newStruct.place.UnknownPlace;
+import newStruct.status.UnknownStatus;
 
 public class SimpleObject extends AbstractObject {
     private String name[];
@@ -13,7 +15,8 @@ public class SimpleObject extends AbstractObject {
     {
         this.name = new String[] {"кто-то"};
         this.place = new Place[] {new UnknownPlace()};
-
+        this.status = new Status[] {new UnknownStatus()};
+        this.action = new Action[] {new UnknownAction()};
     }
 
     public SimpleObject () {
@@ -36,38 +39,42 @@ public class SimpleObject extends AbstractObject {
         this.status = status;
     }
 
-    String getFullName () {
+    @Override
+    public String getFullName () {
         String fullName = "";
         for (int i = 0; i < name.length; i++) {
             fullName += name[i] + " ";
         }
         return fullName;
     }
-    String getFullPlace () {
+    @Override
+    public String getFullPlace () {
         String fullPlace = "";
         for (int i = 0; i < place.length; i++) {
-            fullPlace += place[i] + " ";
+            fullPlace += place[i].loc() + " ";
         }
         return fullPlace;
     }
-    String getFullAction () {
+    @Override
+    public String getFullAction () {
         String fullAction = "";
         for (int i = 0; i < action.length; i++) {
-            fullAction += action[i] + " ";
+            fullAction += action[i].act() + " ";
         }
         return fullAction;
     }
-    String getFullStatus () {
+    @Override
+    public String getFullStatus () {
         String fullStatus = "";
         for (int i = 0; i < status.length; i++) {
-            fullStatus += status[i] + " ";
+            fullStatus += status[i].stat() + " ";
         }
         return fullStatus;
     }
 
     @Override
     public String text () {
-        return this.getFullName() + this.getFullPlace() + this.getFullAction() + this.getFullStatus();
+        return this.getFullStatus() + this.getFullName() + this.getFullPlace() + this.getFullAction();
     }
 
 
