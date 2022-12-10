@@ -1,7 +1,7 @@
 package newStruct;
 
 
-public class NonTargetAction extends AbstractAction implements Action{
+public class NonTargetAction extends AbstractAction implements Action {
     NonTargetAction (String name) {
         super(name);
     }

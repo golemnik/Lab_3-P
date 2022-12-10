@@ -1,10 +1,8 @@
 package newStruct.object;
 
 import newStruct.Action;
-import newStruct.other.Place;
+import newStruct.place.Place;
 import newStruct.other.Status;
-
-import java.util.Arrays;
 
 public class ComplexObject extends AbstractComplexObject {
     private String name[];

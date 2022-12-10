@@ -12,5 +12,5 @@ public abstract class AbstractAction {
         this.name = name;
     }
 
-    String getName () {return name;}
+    public String getName () {return name;}
 }

@@ -2,7 +2,7 @@ package newStruct.object;
 
 
 import newStruct.Action;
-import newStruct.other.Place;
+import newStruct.place.Place;
 import newStruct.other.Status;
 
 public class ComplexObjectBuilder implements ComplexObjBuilder {
