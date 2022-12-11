@@ -12,30 +12,30 @@ public class SimpleObjectDirector {
         builder.reset();
         builder.setObjActions(actions);
     }
-    public void createObj (ObjBuilder builder, Place [] places) {
+    public void createObj (ObjBuilder builder, Place places) {
         builder.reset();
         builder.setObjPlace(places);
     }
-    public void createObj (ObjBuilder builder, Status [] statuses) {
+    public void createObj (ObjBuilder builder, Status statuses) {
         builder.reset();
         builder.setObjStatus(statuses);
     }
-    public void createObj (ObjBuilder builder, Action [] actions, Place [] places) {
+    public void createObj (ObjBuilder builder, Action [] actions, Place places) {
         builder.reset();
         builder.setObjActions(actions);
         builder.setObjPlace(places);
     }
-    public void createObj (ObjBuilder builder, Status [] statuses, Action [] actions) {
+    public void createObj (ObjBuilder builder, Status statuses, Action [] actions) {
         builder.reset();
         builder.setObjActions(actions);
         builder.setObjStatus(statuses);
     }
-    public void createObj (ObjBuilder builder, Place [] places, Status [] statuses) {
+    public void createObj (ObjBuilder builder, Status statuses, Place places) {
         builder.reset();
         builder.setObjPlace(places);
         builder.setObjStatus(statuses);
     }
-    public void createObj (ObjBuilder builder, Status [] statuses, Action [] actions, Place [] places) {
+    public void createObj (ObjBuilder builder, Status statuses, Action [] actions, Place places) {
         builder.reset();
         builder.setObjActions(actions);
         builder.setObjPlace(places);

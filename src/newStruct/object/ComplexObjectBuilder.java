@@ -13,11 +13,11 @@ public class ComplexObjectBuilder implements ComplexObjBuilder {
         obj = new ComplexObject();
     }
     @Override
-    public void setObjStatus(Status[] status){
+    public void setObjStatus(Status status){
         obj.setStatus(status);
     }
     @Override
-    public void setObjPlace(Place[] place){
+    public void setObjPlace(Place place){
         obj.setPlaces(place);
     }
     @Override

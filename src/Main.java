@@ -63,11 +63,11 @@ public class Main {
         SimpleObjectDirector manager = new SimpleObjectDirector();
         SimpleObjectBuilder builder = new SimpleObjectBuilder();
         manager.createObj(builder,
-                new newStruct.status.Status[]{new UnknownStatus("биба")});
+                new UnknownStatus("биба"));
         SimpleObject biba = builder.getObj();
 
         manager.createObj(builder,
-                new newStruct.status.Status[]{new UnknownStatus("боба")},
+                new UnknownStatus("боба"),
                 new newStruct.action.Action[]{new newStruct.action.TargetAction("стоять", "рядом с", biba)});
         SimpleObject boba = builder.getObj();
 
@@ -81,7 +81,7 @@ public class Main {
         ComplexObjectBuilder c_builder = new ComplexObjectBuilder();
         c_manager.createObj(c_builder,
                 new SimpleObject[]{biba, boba},
-                new newStruct.status.Status[]{new UnknownStatus("бобиба")});
+                new UnknownStatus("бобиба"));
         ComplexObject bobiba = c_builder.getObj();
 
         System.out.println(bobiba.text());
@@ -89,7 +89,7 @@ public class Main {
 
     }
     public static void main(String[] args) {
-        newS();
-        //oldS();
+        //newS();
+        oldS();
     }
 }

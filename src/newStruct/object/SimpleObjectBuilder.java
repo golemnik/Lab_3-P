@@ -12,7 +12,7 @@ public class SimpleObjectBuilder implements ObjBuilder {
         obj = new SimpleObject();
     }
     @Override
-    public void setObjPlace(Place [] place){
+    public void setObjPlace(Place place){
         obj.setPlaces(place);
     }
     @Override
@@ -20,7 +20,7 @@ public class SimpleObjectBuilder implements ObjBuilder {
         obj.setActions(action);
     }
     @Override
-    public void setObjStatus(Status [] status){
+    public void setObjStatus(Status status){
         obj.setStatus(status);
     }
 

@@ -8,12 +8,12 @@ import newStruct.place.UnknownPlace;
 import newStruct.status.UnknownStatus;
 
 public class SimpleObject extends AbstractObject implements Obj {
-    private Place place[];
-    private Action action[];
-    private Status status[];
+    private Place place;
+    private Action[] action;
+    private Status status;
     {
-        this.place = new Place[] {new UnknownPlace()};
-        this.status = new Status[] {new UnknownStatus()};
+        this.place = new UnknownPlace();
+        this.status = new UnknownStatus();
         this.action = new Action[] {new UnknownAction()};
     }
 
@@ -21,7 +21,7 @@ public class SimpleObject extends AbstractObject implements Obj {
 
     }
     @Override
-    public void setPlaces (Place [] place) {
+    public void setPlaces (Place place) {
         this.place = place;
     }
     @Override
@@ -29,16 +29,12 @@ public class SimpleObject extends AbstractObject implements Obj {
         this.action = action;
     }
     @Override
-    public void setStatus (Status [] status) {
+    public void setStatus (Status status) {
         this.status = status;
     }
     @Override
     public String getFullPlace () {
-        String fullPlace = "";
-        for (int i = 0; i < place.length; i++) {
-            fullPlace += place[i].loc() + " ";
-        }
-        return fullPlace;
+        return place.loc();
     }
     @Override
     public String getFullAction () {
@@ -50,11 +46,7 @@ public class SimpleObject extends AbstractObject implements Obj {
     }
     @Override
     public String getFullStatus () {
-        String fullStatus = "";
-        for (int i = 0; i < status.length; i++) {
-            fullStatus += status[i].stat() + " ";
-        }
-        return fullStatus;
+        return status.stat();
     }
 
     @Override

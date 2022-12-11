@@ -8,21 +8,21 @@ import newStruct.status.Status;
 import newStruct.status.UnknownStatus;
 
 public class ComplexObject extends AbstractComplexObject implements Obj {
-    private Place place[];
-    private Action action[];
-    private Status status[];
-    private SimpleObject parts [];
+    private Place place;
+    private Action[] action;
+    private Status status;
+    private SimpleObject[] parts;
 
     {
-        this.place = new Place[] {new UnknownPlace()};
-        this.status = new Status[] {new UnknownStatus()};
+        this.place = new UnknownPlace();
+        this.status = new UnknownStatus();
         this.action = new Action[] {new UnknownAction()};
     }
     public ComplexObject () {
 
     }
     @Override
-    public void setPlaces (Place[] place) {
+    public void setPlaces (Place place) {
         this.place = place;
     }
     @Override
@@ -30,7 +30,7 @@ public class ComplexObject extends AbstractComplexObject implements Obj {
         this.action = action;
     }
     @Override
-    public void setStatus (Status[] status) {
+    public void setStatus (Status status) {
         this.status = status;
     }
     public void setParts (SimpleObject [] parts) {
@@ -47,11 +47,7 @@ public class ComplexObject extends AbstractComplexObject implements Obj {
     }
     @Override
     public String getFullPlace () {
-        String fullPlace = "";
-        for (int i = 0; i < place.length; i++) {
-            fullPlace += place[i].loc() + " ";
-        }
-        return fullPlace;
+        return place.loc();
     }
     @Override
     public String getFullAction () {
@@ -63,11 +59,7 @@ public class ComplexObject extends AbstractComplexObject implements Obj {
     }
     @Override
     public String getFullStatus () {
-        String fullStatus = "";
-        for (int i = 0; i < status.length; i++) {
-            fullStatus += status[i].stat() + " ";
-        }
-        return fullStatus;
+        return status.stat();
     }
     @Override
     public String text () {

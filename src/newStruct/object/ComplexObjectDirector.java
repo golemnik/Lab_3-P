@@ -14,35 +14,35 @@ public class ComplexObjectDirector {
         builder.setObjParts(objects);
         builder.setObjActions(actions);
     }
-    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Place[] places) {
+    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Place places) {
         builder.reset();
         builder.setObjParts(objects);
         builder.setObjPlace(places);
     }
-    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Status[] statuses) {
+    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Status statuses) {
         builder.reset();
         builder.setObjParts(objects);
         builder.setObjStatus(statuses);
     }
-    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Action [] actions, Place [] places) {
+    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Action [] actions, Place places) {
         builder.reset();
         builder.setObjParts(objects);
         builder.setObjActions(actions);
         builder.setObjPlace(places);
     }
-    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Action [] actions, Status [] statuses) {
+    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Action [] actions, Status statuses) {
         builder.reset();
         builder.setObjParts(objects);
         builder.setObjActions(actions);
         builder.setObjStatus(statuses);
     }
-    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Place [] places, Status [] statuses) {
+    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Place  places, Status statuses) {
         builder.reset();
         builder.setObjParts(objects);
         builder.setObjPlace(places);
         builder.setObjStatus(statuses);
     }
-    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Action [] actions, Place [] places, Status [] statuses) {
+    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Action [] actions, Place places, Status statuses) {
         builder.reset();
         builder.setObjParts(objects);
         builder.setObjActions(actions);
