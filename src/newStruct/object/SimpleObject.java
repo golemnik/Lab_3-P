@@ -23,10 +23,6 @@ public class SimpleObject extends AbstractObject {
 
     }
     @Override
-    public void setNames (String [] name) {
-        this.name = name;
-    }
-    @Override
     public void setPlaces (Place [] place) {
         this.place = place;
     }
@@ -37,15 +33,6 @@ public class SimpleObject extends AbstractObject {
     @Override
     public void setStatus (Status [] status) {
         this.status = status;
-    }
-
-    @Override
-    public String getFullName () {
-        String fullName = "";
-        for (int i = 0; i < name.length; i++) {
-            fullName += name[i] + " ";
-        }
-        return fullName;
     }
     @Override
     public String getFullPlace () {
@@ -74,7 +61,7 @@ public class SimpleObject extends AbstractObject {
 
     @Override
     public String text () {
-        return this.getFullStatus() + this.getFullName() + this.getFullPlace() + this.getFullAction();
+        return this.getFullStatus() + this.getFullPlace() + this.getFullAction();
     }
 
 

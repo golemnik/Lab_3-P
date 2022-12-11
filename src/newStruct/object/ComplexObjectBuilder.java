@@ -13,8 +13,8 @@ public class ComplexObjectBuilder implements ComplexObjBuilder {
         obj = new ComplexObject();
     }
     @Override
-    public void setObjName(String [] name) {
-        obj.setNames(name);
+    public void setObjStatus(Status[] status){
+        obj.setStatus(status);
     }
     @Override
     public void setObjPlace(Place[] place){
@@ -24,11 +24,6 @@ public class ComplexObjectBuilder implements ComplexObjBuilder {
     public void setObjActions(Action[] action){
         obj.setActions(action);
     }
-    @Override
-    public void setObjStatus(Status[] status){
-        obj.setStatus(status);
-    }
-
     @Override
     public void setObjParts (SimpleObject[] parts) {
         obj.setParts(parts);

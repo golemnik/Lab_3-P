@@ -6,12 +6,12 @@ public class RelativePlace extends AbstractPlace implements Place{
     AbstractObject object;
 
     public RelativePlace (String place, AbstractObject object) {
-        this.setName(place);
+        this.setPlace(place);
         this.object = object;
     }
     @Override
     public String loc() {
-        return getName() + " " + object.getFullName();
+        return getPlace() + " " + object.getFullStatus();
     }
 
 }

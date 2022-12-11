@@ -2,6 +2,7 @@ import newStruct.object.*;
 import newStruct.place.Place;
 import newStruct.place.RelativePlace;
 import newStruct.place.UnknownPlace;
+import newStruct.status.Status;
 import props.*;
 import props.Actor;
 import reason.*;
@@ -58,9 +59,9 @@ public class Main {
     public static void main(String[] args) {
         SimpleObjectDirector manager = new SimpleObjectDirector();
         SimpleObjectBuilder builder = new SimpleObjectBuilder();
-        manager.createObj(builder, new String[] { "биба"});
+        manager.createObj(builder);
         SimpleObject biba = builder.getObj();
-        manager.createObj(builder, new String[] { "боба"});
+        manager.createObj(builder);
         SimpleObject boba = builder.getObj();
         System.out.println(biba.text());
         biba.setPlaces(new Place[]{new RelativePlace("около", boba)});

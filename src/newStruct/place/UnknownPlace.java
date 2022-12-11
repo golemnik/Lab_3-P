@@ -2,10 +2,10 @@ package newStruct.place;
 
 public class UnknownPlace extends AbstractPlace implements Place{
     public UnknownPlace () {
-        this.setName("где-то");
+        this.setPlace("где-то");
     }
     @Override
     public String loc() {
-        return this.getName();
+        return this.getPlace();
     }
 }

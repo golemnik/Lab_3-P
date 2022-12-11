@@ -12,10 +12,6 @@ public class SimpleObjectBuilder implements ObjBuilder {
         obj = new SimpleObject();
     }
     @Override
-    public void setObjName(String [] name) {
-        obj.setNames(name);
-    }
-    @Override
     public void setObjPlace(Place [] place){
         obj.setPlaces(place);
     }
