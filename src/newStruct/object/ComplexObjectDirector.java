@@ -1,6 +1,6 @@
 package newStruct.object;
 
-import newStruct.Action;
+import newStruct.action.Action;
 import newStruct.place.Place;
 import newStruct.status.Status;
 

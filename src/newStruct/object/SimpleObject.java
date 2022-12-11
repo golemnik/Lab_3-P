@@ -1,19 +1,17 @@
 package newStruct.object;
 
-import newStruct.Action;
-import newStruct.UnknownAction;
+import newStruct.action.Action;
+import newStruct.action.UnknownAction;
 import newStruct.place.Place;
 import newStruct.status.Status;
 import newStruct.place.UnknownPlace;
 import newStruct.status.UnknownStatus;
 
-public class SimpleObject extends AbstractObject {
-    private String name[];
+public class SimpleObject extends AbstractObject implements Obj {
     private Place place[];
     private Action action[];
     private Status status[];
     {
-        this.name = new String[] {"кто-то"};
         this.place = new Place[] {new UnknownPlace()};
         this.status = new Status[] {new UnknownStatus()};
         this.action = new Action[] {new UnknownAction()};

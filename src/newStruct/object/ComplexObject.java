@@ -1,15 +1,23 @@
 package newStruct.object;
 
-import newStruct.Action;
+import newStruct.action.Action;
+import newStruct.action.UnknownAction;
 import newStruct.place.Place;
+import newStruct.place.UnknownPlace;
 import newStruct.status.Status;
+import newStruct.status.UnknownStatus;
 
-public class ComplexObject extends AbstractComplexObject {
+public class ComplexObject extends AbstractComplexObject implements Obj {
     private Place place[];
     private Action action[];
     private Status status[];
     private SimpleObject parts [];
 
+    {
+        this.place = new Place[] {new UnknownPlace()};
+        this.status = new Status[] {new UnknownStatus()};
+        this.action = new Action[] {new UnknownAction()};
+    }
     public ComplexObject () {
 
     }
@@ -31,7 +39,7 @@ public class ComplexObject extends AbstractComplexObject {
 
     @Override
     public String getFullParts () {
-        String fullParts = "";
+        String fullParts = "из ";
         for (int i = 0; i < parts.length; i++) {
             fullParts += parts[i].getFullStatus() + " ";
         }

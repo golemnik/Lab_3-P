@@ -1,6 +1,6 @@
 package newStruct.object;
 
-import newStruct.Action;
+import newStruct.action.Action;
 import newStruct.place.Place;
 import newStruct.status.Status;
 
@@ -25,7 +25,7 @@ public class SimpleObjectDirector {
         builder.setObjActions(actions);
         builder.setObjPlace(places);
     }
-    public void createObj (ObjBuilder builder, Action [] actions, Status [] statuses) {
+    public void createObj (ObjBuilder builder, Status [] statuses, Action [] actions) {
         builder.reset();
         builder.setObjActions(actions);
         builder.setObjStatus(statuses);
@@ -35,7 +35,7 @@ public class SimpleObjectDirector {
         builder.setObjPlace(places);
         builder.setObjStatus(statuses);
     }
-    public void createObj (ObjBuilder builder, Action [] actions, Place [] places, Status [] statuses) {
+    public void createObj (ObjBuilder builder, Status [] statuses, Action [] actions, Place [] places) {
         builder.reset();
         builder.setObjActions(actions);
         builder.setObjPlace(places);

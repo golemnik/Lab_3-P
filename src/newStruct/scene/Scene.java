@@ -1,9 +1,9 @@
 package newStruct.scene;
 
-import newStruct.object.AbstractObject;
+import newStruct.object.Obj;
 
 public class Scene {
-    AbstractObject actors [];
+    Obj actors [];
 
 
 

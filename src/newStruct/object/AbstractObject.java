@@ -1,6 +1,6 @@
 package newStruct.object;
 
-import newStruct.Action;
+import newStruct.action.Action;
 import newStruct.place.Place;
 import newStruct.status.Status;
 
@@ -12,5 +12,4 @@ public abstract class AbstractObject {
     public abstract String getFullPlace ();
     public abstract String getFullAction ();
     public abstract String getFullStatus ();
-    public abstract String text ();
 }

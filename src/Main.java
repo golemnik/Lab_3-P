@@ -1,17 +1,19 @@
+import newStruct.action.TargetToPlaceAction;
 import newStruct.object.*;
+import newStruct.place.GeneralPlace;
 import newStruct.place.Place;
 import newStruct.place.RelativePlace;
-import newStruct.place.UnknownPlace;
-import newStruct.status.Status;
-import props.*;
-import props.Actor;
-import reason.*;
-import status.*;
-import action.*;
-import position.*;
+import newStruct.status.UnknownStatus;
+import oldStruct.Scene;
+import oldStruct.props.*;
+import oldStruct.props.Actor;
+import oldStruct.reason.*;
+import oldStruct.status.*;
+import oldStruct.action.*;
+import oldStruct.position.*;
 
 public class Main {
-    void scene_1 () {
+    static void oldS () {
         Scene scene = new Scene();
 
         Actor she = new Actor("Она");
@@ -56,16 +58,38 @@ public class Main {
 
         scene.play();
     }
-    public static void main(String[] args) {
+
+    static void newS () {
         SimpleObjectDirector manager = new SimpleObjectDirector();
         SimpleObjectBuilder builder = new SimpleObjectBuilder();
-        manager.createObj(builder);
+        manager.createObj(builder,
+                new newStruct.status.Status[]{new UnknownStatus("биба")});
         SimpleObject biba = builder.getObj();
-        manager.createObj(builder);
+
+        manager.createObj(builder,
+                new newStruct.status.Status[]{new UnknownStatus("боба")},
+                new newStruct.action.Action[]{new newStruct.action.TargetAction("стоять", "рядом с", biba)});
         SimpleObject boba = builder.getObj();
+
+        //biba.setPlaces(new Place[]{new RelativePlace("около", boba)});
+        GeneralPlace gpl = new GeneralPlace("комната");
+        biba.setActions(new newStruct.action.Action[]{new TargetToPlaceAction(boba, "поставить", "в", gpl)});
+        System.out.println(boba.text());
         System.out.println(biba.text());
-        biba.setPlaces(new Place[]{new RelativePlace("около", boba)});
-        System.out.println(biba.text());
-        System.out.println(boba.getFullPlace());
+
+        ComplexObjectDirector c_manager = new ComplexObjectDirector();
+        ComplexObjectBuilder c_builder = new ComplexObjectBuilder();
+        c_manager.createObj(c_builder,
+                new SimpleObject[]{biba, boba},
+                new newStruct.status.Status[]{new UnknownStatus("бобиба")});
+        ComplexObject bobiba = c_builder.getObj();
+
+        System.out.println(bobiba.text());
+
+
+    }
+    public static void main(String[] args) {
+        newS();
+        //oldS();
     }
 }
