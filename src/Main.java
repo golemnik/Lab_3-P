@@ -60,36 +60,39 @@ public class Main {
     }
 
     static void newS () {
-        SimpleObjectDirector manager = new SimpleObjectDirector();
-        SimpleObjectBuilder builder = new SimpleObjectBuilder();
-        manager.createObj(builder,
-                new UnknownStatus("биба"));
-        SimpleObject biba = builder.getObj();
+        newStruct.scene.Scene scene = new newStruct.scene.Scene();
+        SimpleObjectDirector sManager = new SimpleObjectDirector();
+        SimpleObjectBuilder sBuilder = new SimpleObjectBuilder();
+        ComplexObjectDirector cManager = new ComplexObjectDirector();
+        ComplexObjectBuilder cBuilder = new ComplexObjectBuilder();
 
-        manager.createObj(builder,
-                new UnknownStatus("боба"),
-                new newStruct.action.Action[]{new newStruct.action.TargetAction("стоять", "рядом с", biba)});
-        SimpleObject boba = builder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("стол")); SimpleObject table = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("тарелка")); SimpleObject plate = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("чашка")); SimpleObject cup = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("цветок")); SimpleObject flower = sBuilder.getObj();
+        cManager.createObj(cBuilder, new SimpleObject[] {flower}, new newStruct.status.UnknownStatus(("букет"))); ComplexObject flowerPack = cBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("кекс")); SimpleObject cake = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("плита")); SimpleObject plita = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("Филифьонка")); SimpleObject filifioka = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("часы")); SimpleObject clocks = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("лист")); SimpleObject leaf = sBuilder.getObj();
+        cManager.createObj(cBuilder, new SimpleObject[] {leaf}, new newStruct.status.UnknownStatus("гирлянда")); ComplexObject girlianda = cBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("дверь")); SimpleObject door = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("зеркало")); SimpleObject mirror = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("рука")); SimpleObject arms = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("колпачок")); SimpleObject kolpachok = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("лоб")); SimpleObject lob = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("колоколчик")); SimpleObject kolokolchik = sBuilder.getObj();
+        sManager.createObj(sBuilder, new UnknownStatus("слеза")); SimpleObject slezi = sBuilder.getObj();
 
-        //biba.setPlaces(new Place[]{new RelativePlace("около", boba)});
-        GeneralPlace gpl = new GeneralPlace("комната");
-        biba.setActions(new newStruct.action.Action[]{new TargetToPlaceAction(boba, "поставить", "в", gpl)});
-        System.out.println(boba.text());
-        System.out.println(biba.text());
+        scene.addActorText(new Obj[]{table, plate, cup, flowerPack, cake,
+                plita, filifioka, clocks, girlianda, door, mirror, arms,
+                kolpachok, lob, kolokolchik, slezi});
 
-        ComplexObjectDirector c_manager = new ComplexObjectDirector();
-        ComplexObjectBuilder c_builder = new ComplexObjectBuilder();
-        c_manager.createObj(c_builder,
-                new SimpleObject[]{biba, boba},
-                new UnknownStatus("бобиба"));
-        ComplexObject bobiba = c_builder.getObj();
-
-        System.out.println(bobiba.text());
-
-
+        scene.play();
     }
     public static void main(String[] args) {
-        //newS();
-        oldS();
+        newS();
+        //oldS();
     }
 }
