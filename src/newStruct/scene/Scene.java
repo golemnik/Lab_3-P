@@ -1,7 +1,6 @@
 package newStruct.scene;
 
 import newStruct.object.Obj;
-import oldStruct.props.ComplexActor;
 
 public class Scene {
     Obj[] order;

@@ -6,6 +6,7 @@ import newStruct.place.Place;
 import newStruct.place.UnknownPlace;
 import newStruct.status.Status;
 import newStruct.status.UnknownStatus;
+import oldStruct.action.ActionOrder;
 
 public abstract class AbstractObject implements Obj{
     private Place place;
@@ -34,6 +35,19 @@ public abstract class AbstractObject implements Obj{
         String fullAction = "";
         for (int i = 0; i < action.length; i++) {
             fullAction += action[i].act() + " ";
+            switch (i){
+                case 0:
+                    break;
+                case 1:
+                    fullAction += ActionOrder.потом + " ";
+                    break;
+                case 2:
+                    fullAction += ActionOrder.затем + " ";
+                    break;
+                default:
+                    fullAction += ActionOrder.следом + " ";
+                    break;
+            }
         }
         return fullAction;
     }
