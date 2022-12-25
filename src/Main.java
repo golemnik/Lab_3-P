@@ -1,4 +1,6 @@
+import newStruct.action.MultiTargetAction;
 import newStruct.action.MultiTargetToPlaceAction;
+import newStruct.action.NonTargetAction;
 import newStruct.action.TargetToPlaceAction;
 import newStruct.object.*;
 import newStruct.place.GeneralPlace;
@@ -68,52 +70,85 @@ public class Main {
         ComplexObjectBuilder cBuilder = new ComplexObjectBuilder();
 
         sManager.createObj(sBuilder, new UnknownStatus("стол"));
-            SimpleObject table = sBuilder.getObj();
+        SimpleObject table = new SimpleObjectBuilder()
+                .setObjStatus(new UnknownStatus(""))
+                .build();
+
         sManager.createObj(sBuilder, new UnknownStatus("тарелка"));
-            SimpleObject plate = sBuilder.getObj();
+        SimpleObject plate1 = sBuilder.getObj();
+
         sManager.createObj(sBuilder, new UnknownStatus("чашка"));
-            SimpleObject cup = sBuilder.getObj();
+        SimpleObject cup = sBuilder.getObj();
+
         sManager.createObj(sBuilder, new UnknownStatus("цветок"));
-            SimpleObject flower = sBuilder.getObj();
+        SimpleObject flower = sBuilder.getObj();
         cManager.createObj(cBuilder, new SimpleObject[] {flower}, new newStruct.status.UnknownStatus(("букет")));
             ComplexObject flowerPack = cBuilder.getObj();
-        sManager.createObj(sBuilder, new UnknownStatus("кекс"));
-            SimpleObject cake = sBuilder.getObj();
         sManager.createObj(sBuilder, new UnknownStatus("плита"));
             SimpleObject plita = sBuilder.getObj();
-        sManager.createObj(sBuilder, new UnknownStatus("Филифьонка"));
-            SimpleObject filifioka = sBuilder.getObj();
         sManager.createObj(sBuilder, new UnknownStatus("часы"));
             SimpleObject clocks = sBuilder.getObj();
         sManager.createObj(sBuilder, new UnknownStatus("лист"));
             SimpleObject leaf = sBuilder.getObj();
-        cManager.createObj(cBuilder, new SimpleObject[] {leaf}, new newStruct.status.UnknownStatus("гирлянда"));
-            ComplexObject girlianda = cBuilder.getObj();
+
         sManager.createObj(sBuilder, new UnknownStatus("дверь"));
             SimpleObject door = sBuilder.getObj();
         sManager.createObj(sBuilder, new UnknownStatus("зеркало"));
             SimpleObject mirror = sBuilder.getObj();
         sManager.createObj(sBuilder, new UnknownStatus("рука"));
             SimpleObject arms = sBuilder.getObj();
-        sManager.createObj(sBuilder, new UnknownStatus("колпачок"));
-            SimpleObject kolpachok = sBuilder.getObj();
         sManager.createObj(sBuilder, new UnknownStatus("лоб"));
             SimpleObject lob = sBuilder.getObj();
-        sManager.createObj(sBuilder, new UnknownStatus("колоколчик"));
-            SimpleObject kolokolchik = sBuilder.getObj();
-        sManager.createObj(sBuilder, new UnknownStatus("слеза"));
-            SimpleObject slezi = sBuilder.getObj();
 
+
+        cManager.createObj(cBuilder,
+                new SimpleObject[] {leaf},
+                new newStruct.status.UnknownStatus("гирлянда"),
+                new RelativePlace("над", door));
+                ComplexObject girlianda = cBuilder.getObj();
         sManager.createObj(sBuilder,
                 new UnknownStatus("она"),
-                new newStruct.action.Action[]{new MultiTargetToPlaceAction(new Obj[]{plate, cup, flowerPack},
+                new newStruct.action.Action[]{new MultiTargetToPlaceAction(new Obj[]{plate1, cup, flowerPack},
                         "поставить", "на", table)}
                 );
-            SimpleObject she = sBuilder.getObj();
+                SimpleObject she = sBuilder.getObj();
+        sManager.createObj(sBuilder,
+                new newStruct.status.GeneralStatus("кекс", "почерневший"),
+                new newStruct.action.Action[]{new newStruct.action.TargetAction("стоять", "на", plita)});
+                SimpleObject cake = sBuilder.getObj();
+        sManager.createObj(sBuilder,
+                new UnknownStatus("Филифьонка"),
+                new newStruct.action.Action[]{new MultiTargetAction("взгялнуть", "на", new AbstractObject[]{girlianda, clocks}, "и"),
+                                            new newStruct.action.TargetAction("посмотреть", "на себя в", mirror),
+                                            new newStruct.action.NonTargetAction("заплакать")});
+                SimpleObject filifioka = sBuilder.getObj();
+        sManager.createObj(sBuilder,
+                new UnknownStatus("колпачок"),
+                new newStruct.action.Action[]{new newStruct.action.TargetAction("съехать", "на",lob)});
+                SimpleObject kolpachok = sBuilder.getObj();
+        sManager.createObj(sBuilder,
+                new UnknownStatus("колоколчик"),
+                new newStruct.action.Action[] {new NonTargetAction("звякнуть")});
+                SimpleObject kolokolchik = sBuilder.getObj();
 
-        scene.addActorText(new Obj[]{she});
+        sManager.createObj(sBuilder,
+                new newStruct.status.GeneralStatus("тарелка", "пустая"));
+                SimpleObject plate2 = sBuilder.getObj();
+        sManager.createObj(sBuilder,
+                new UnknownStatus("слеза"),
+                new newStruct.action.Action[]{new newStruct.action.TargetAction("закапать", "в", plate2)});
+                SimpleObject slezi = sBuilder.getObj();
 
+        scene.addActorText(new Obj[]{she, cake, filifioka, kolpachok, kolokolchik, slezi});
         scene.play();
+
+        //ТуДу
+        //делать причину статуса
+        //мультистатус
+        //адаптивный вывод чтобы не выводить странный текст
+        // что-то сделать с зеркалом и отражением предмета
+        // сделать изменение состояние всех объектов в пространтсве если хоть один изменил позицию
+        // сделать ходы
     }
     public static void main(String[] args) {
         newS();

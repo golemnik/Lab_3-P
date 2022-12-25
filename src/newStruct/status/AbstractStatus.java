@@ -18,8 +18,9 @@ public abstract class AbstractStatus {
     public String getAmount () {
         switch (amount){
             case 1:
-                return toString(Nums.один);
+                break;
 
         }
+        return "";
     }
 }

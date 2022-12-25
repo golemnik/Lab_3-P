@@ -2,7 +2,7 @@ package newStruct.action;
 
 
 public class NonTargetAction extends AbstractAction implements Action {
-    NonTargetAction (String action) {
+    public NonTargetAction (String action) {
         this.setAction(action);
     }
 

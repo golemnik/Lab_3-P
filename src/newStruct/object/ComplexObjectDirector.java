@@ -36,7 +36,7 @@ public class ComplexObjectDirector {
         builder.setObjActions(actions);
         builder.setObjStatus(statuses);
     }
-    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Place  places, Status statuses) {
+    public void createObj (ComplexObjBuilder builder, SimpleObject [] objects, Status statuses, Place places) {
         builder.reset();
         builder.setObjParts(objects);
         builder.setObjPlace(places);

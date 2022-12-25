@@ -5,23 +5,31 @@ import newStruct.place.Place;
 import newStruct.status.Status;
 
 public class SimpleObjectBuilder implements ObjBuilder {
-    private SimpleObject obj;
+    private final SimpleObject obj;
+
+    public SimpleObjectBuilder() {
+        this.obj = new SimpleObject();
+    }
 
     @Override
-    public void reset () {
-        obj = new SimpleObject();
-    }
-    @Override
-    public void setObjPlace(Place place){
+    public SimpleObjectBuilder setObjPlace(Place place){
         obj.setPlaces(place);
+        return this;
     }
     @Override
-    public void setObjActions(Action [] action){
+    public SimpleObjectBuilder setObjActions(Action [] action){
         obj.setActions(action);
+        return this;
     }
     @Override
-    public void setObjStatus(Status status){
+    public SimpleObjectBuilder setObjStatus(Status status){
         obj.setStatus(status);
+        return this;
+    }
+
+    @Override
+    public SimpleObject build() {
+        return obj;
     }
 
     public SimpleObject getObj() {

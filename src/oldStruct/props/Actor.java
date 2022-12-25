@@ -110,20 +110,25 @@ public class Actor extends Entity {
     }
 
     @Override
-    public int hashCode() {
-        int result = Objects.hash(position, amount, action, status);
-        result = 31 * result + Arrays.hashCode(actions);
-        return result;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Actor actor)) return false;
-        return Objects.equals(position, actor.position) &&
-                Objects.equals(amount, actor.amount) &&
-                Objects.equals(action, actor.action) &&
-                Arrays.equals(actions, actor.actions) &&
-                Objects.equals(status, actor.status);
+
+        if (!Objects.equals(position, actor.position)) return false;
+        if (!Objects.equals(amount, actor.amount)) return false;
+        if (!Objects.equals(action, actor.action)) return false;
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        if (!Arrays.equals(actions, actor.actions)) return false;
+        return Objects.equals(status, actor.status);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = position != null ? position.hashCode() : 0;
+        result = 31 * result + (amount != null ? amount.hashCode() : 0);
+        result = 31 * result + (action != null ? action.hashCode() : 0);
+        result = 31 * result + Arrays.hashCode(actions);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        return result;
     }
 }

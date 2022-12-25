@@ -35,18 +35,19 @@ public abstract class AbstractObject implements Obj{
         String fullAction = "";
         for (int i = 0; i < action.length; i++) {
             fullAction += action[i].act() + " ";
-            switch (i){
-                case 0:
-                    break;
-                case 1:
-                    fullAction += ActionOrder.потом + " ";
-                    break;
-                case 2:
-                    fullAction += ActionOrder.затем + " ";
-                    break;
-                default:
-                    fullAction += ActionOrder.следом + " ";
-                    break;
+            if (i+1 == action.length);
+            else {
+                switch (i){
+                    case 0:
+                        fullAction += ", " + ActionOrder.потом + " ";
+                        break;
+                    case 1:
+                        fullAction += ", " + ActionOrder.затем + " ";
+                        break;
+                    default:
+                        fullAction += ", " + ActionOrder.следом + " ";
+                        break;
+                }
             }
         }
         return fullAction;
