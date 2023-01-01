@@ -3,14 +3,14 @@ package object;
 import action.Action;
 import action.UnknownAction;
 import place.UnknownPlace;
-import status.UnknownStatus;
+import status.UnknownStats;
 
 public abstract class AbstractComplexObject extends AbstractObject {
     private SimpleObject[] parts;
 
     {
         this.setPlaces(new UnknownPlace());
-        this.setStatus(new UnknownStatus());
+        this.setStatus(new UnknownStats());
         this.setActions(new Action[] {new UnknownAction()});
     }
     public void setParts (SimpleObject [] parts) {

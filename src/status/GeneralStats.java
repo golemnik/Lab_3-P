@@ -1,17 +1,18 @@
 package status;
 
-public class GeneralStatus extends AbstractStatus implements Status{
+public class GeneralStats extends AbstractStats implements Stats {
 
-    public GeneralStatus (String status) {
+    public GeneralStats(String status) {
         this.setName("кто-то");
         this.setStatus(status);
     }
-    public GeneralStatus (String name, String status) {
+    public GeneralStats(String name, String status) {
         this.setName(name);
         this.setStatus(status);
     }
     @Override
-    public String stat() {
+    public String text() {
         return this.getStatus() + " " + this.getName();
     }
+
 }

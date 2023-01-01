@@ -1,12 +1,14 @@
 package object;
 
 import action.Action;
+import exeptions.ComplexityExeption;
 import place.Place;
-import status.Status;
+import status.Stats;
 
 public interface ObjBuilder {
-    ObjBuilder setObjStatus(Status status);
+    ObjBuilder setObjStatus(Stats status);
     ObjBuilder setObjPlace(Place place);
     ObjBuilder setObjActions(Action [] action);
-    Obj build();
+    Obj build() throws ComplexityExeption;
+    Obj defaultBuild ();
 }

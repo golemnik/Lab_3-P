@@ -1,17 +1,17 @@
 package status;
 
-public class UnknownStatus extends AbstractStatus implements Status{
+public class UnknownStats extends AbstractStats implements Stats {
 
-    public UnknownStatus () {
+    public UnknownStats() {
         this.setName("кто-то");
         this.setStatus("какой-то");
     }
-    public UnknownStatus (String name) {
+    public UnknownStats(String name) {
         this.setName(name);
         this.setStatus("какой-то");
     }
     @Override
-    public String stat() {
+    public String text() {
         return this.getStatus() + " " + this.getName();
     }
 }

@@ -4,17 +4,17 @@ import action.Action;
 import action.UnknownAction;
 import place.Place;
 import place.UnknownPlace;
-import status.Status;
-import status.UnknownStatus;
+import status.Stats;
+import status.UnknownStats;
 import action.ActionOrder;
 
 public abstract class AbstractObject implements Obj{
     private Place place;
     private Action[] action;
-    private Status status;
+    private Stats status;
     {
         this.place = new UnknownPlace();
-        this.status = new UnknownStatus();
+        this.status = new UnknownStats();
         this.action = new Action[] {new UnknownAction()};
     }
 
@@ -25,7 +25,7 @@ public abstract class AbstractObject implements Obj{
     public void setActions (Action [] action) {
         this.action = action;
     }
-    public void setStatus (Status status) {
+    public void setStatus (Stats status) {
         this.status = status;
     }
     public String getFullPlace () {
@@ -53,6 +53,6 @@ public abstract class AbstractObject implements Obj{
         return fullAction;
     }
     public String getFullStatus () {
-        return status.stat();
+        return status.text();
     }
 }
