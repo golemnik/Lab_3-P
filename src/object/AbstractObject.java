@@ -2,10 +2,10 @@ package object;
 
 import action.Action;
 import action.UnknownAction;
+import place.ObjectPlace;
 import place.Place;
-import place.UnknownPlace;
+import status.GeneralStats;
 import status.Stats;
-import status.UnknownStats;
 import action.ActionOrder;
 
 public abstract class AbstractObject implements Obj{
@@ -13,8 +13,8 @@ public abstract class AbstractObject implements Obj{
     private Action[] action;
     private Stats status;
     {
-        this.place = new UnknownPlace();
-        this.status = new UnknownStats();
+        this.place = new ObjectPlace().builder().defualtBuild();
+        this.status = new GeneralStats().builder().defualtBuild();
         this.action = new Action[] {new UnknownAction()};
     }
 
@@ -29,7 +29,7 @@ public abstract class AbstractObject implements Obj{
         this.status = status;
     }
     public String getFullPlace () {
-        return place.loc();
+        return place.text();
     }
     public String getFullAction () {
         String fullAction = "";

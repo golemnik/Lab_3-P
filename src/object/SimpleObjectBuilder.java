@@ -2,10 +2,10 @@ package object;
 
 import action.Action;
 import action.UnknownAction;
+import place.ObjectPlace;
 import place.Place;
-import place.UnknownPlace;
+import status.GeneralStats;
 import status.Stats;
-import status.UnknownStats;
 
 public class SimpleObjectBuilder implements ObjBuilder {
     private final SimpleObject obj;
@@ -35,8 +35,8 @@ public class SimpleObjectBuilder implements ObjBuilder {
     }
     @Override
     public SimpleObject defaultBuild () {
-        obj.setStatus(new UnknownStats());
-        obj.setPlaces(new UnknownPlace());
+        obj.setStatus(new GeneralStats().builder().defualtBuild());
+        obj.setPlaces(new ObjectPlace().builder().defualtBuild());
         obj.setActions(new Action[]{new UnknownAction()});
         return obj;
     };

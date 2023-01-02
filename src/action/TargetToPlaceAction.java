@@ -17,6 +17,6 @@ public class TargetToPlaceAction extends AbstractAction implements Action{
     // update target!
     @Override
     public String act() {
-        return this.getAction() + " " + this.target.getFullStatus() + " " + this.preposition + " " + place.loc();
+        return this.getAction() + " " + this.target.getFullStatus() + " " + this.preposition + " " + place.text();
     }
 }

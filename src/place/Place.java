@@ -1,5 +1,5 @@
 package place;
 
 public interface Place {
-    public String loc (); // loc means location
+    public String text (); // loc means location
 }
