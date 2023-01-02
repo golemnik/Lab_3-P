@@ -2,7 +2,7 @@ package object;
 
 import action.Action;
 import action.UnknownAction;
-import place.ObjectPlace;
+import place.TargetPlace;
 import place.Place;
 import status.GeneralStats;
 import status.Stats;
@@ -13,7 +13,7 @@ public abstract class AbstractObject implements Obj{
     private Action[] action;
     private Stats status;
     {
-        this.place = new ObjectPlace().builder().defualtBuild();
+        this.place = new TargetPlace().builder().defualtBuild();
         this.status = new GeneralStats().builder().defualtBuild();
         this.action = new Action[] {new UnknownAction()};
     }

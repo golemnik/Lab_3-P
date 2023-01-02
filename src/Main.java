@@ -1,9 +1,8 @@
 import action.Action;
 import action.UnknownAction;
 import object.*;
-import place.ObjectPlace;
+import place.TargetPlace;
 import status.GeneralStats;
-import status.Stats;
 
 public class Main {
 
@@ -18,7 +17,7 @@ public class Main {
         ComplexObject plate2 = new ComplexObjectBuilder()
                 .setObjParts(new SimpleObject[]{new SimpleObjectBuilder().defaultBuild()})
                 .setObjStatus(new GeneralStats().builder().addStatus("пухленький").build())
-                .setObjPlace(new ObjectPlace().builder().addRelativeObject(new SimpleObjectBuilder().defaultBuild()).build())
+                .setObjPlace(new TargetPlace().builder().defualtBuild())
                 .setObjActions(new Action[]{new UnknownAction()})
                 .build();
         System.out.println(plate1.text());
@@ -28,6 +27,8 @@ public class Main {
         newS();
     }
 }
+
+// todo доделать вывод позиции относительно объекта!
 
 // todo 4 генератор случайных названий
 // todo 3 генератор случайного объекта

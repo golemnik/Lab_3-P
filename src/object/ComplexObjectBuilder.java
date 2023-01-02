@@ -4,7 +4,7 @@ package object;
 import action.Action;
 import action.UnknownAction;
 import exeptions.ComplexityExeption;
-import place.ObjectPlace;
+import place.TargetPlace;
 import place.Place;
 import status.GeneralStats;
 import status.Stats;
@@ -40,7 +40,7 @@ public class ComplexObjectBuilder implements ComplexObjBuilder {
     @Override
     public ComplexObject defaultBuild () {
         obj.setStatus(new GeneralStats().builder().defualtBuild());
-        obj.setPlaces(new ObjectPlace().builder().defualtBuild());
+        obj.setPlaces(new TargetPlace().builder().defualtBuild());
         obj.setActions(new Action[]{new UnknownAction()});
         obj.setParts(new SimpleObject[]{new SimpleObjectBuilder().defaultBuild()});
         return obj;
