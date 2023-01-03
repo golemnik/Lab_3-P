@@ -2,7 +2,7 @@ package object;
 
 import action.Action;
 import action.UnknownAction;
-import place.TargetPlace;
+import place.GeneralPlace;
 import place.Place;
 import status.GeneralStats;
 import status.Stats;
@@ -36,7 +36,7 @@ public class SimpleObjectBuilder implements ObjBuilder {
     @Override
     public SimpleObject defaultBuild () {
         obj.setStatus(new GeneralStats().builder().defualtBuild());
-        obj.setPlaces(new TargetPlace().builder().defualtBuild());
+        obj.setPlaces(new GeneralPlace().builder().defualtBuild());
         obj.setActions(new Action[]{new UnknownAction()});
         return obj;
     };
