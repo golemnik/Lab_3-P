@@ -1,5 +1,8 @@
 package object;
 
+import annotation.GetPublicThings;
+
+@GetPublicThings
 public class ComplexObject extends AbstractComplexObject {
     public ComplexObject () {}
     @Override

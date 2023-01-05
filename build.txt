@@ -1,0 +1,4 @@
+javac -encoding utf8 -d "terminalOut" -classpath "out/artifacts/AnnotationProcessor_jar/AnnotationProcessor.jar" -sourcepath GeneralCode/src GeneralCode/src/main.java GeneralCode/src/object/ComplexObject.java
+
+выводит только для явно указанных классов во время команды javac
+после обновления процессора егонужно скомпилировать перед компиляцией оснвоного проекта

@@ -2,13 +2,10 @@ import action.Action;
 import action.TargetAction;
 import action.UnknownAction;
 import object.*;
-import place.GeneralPlace;
 import place.TargetPlace;
 import status.GeneralStats;
 
 public class Main {
-    @GetField int test = 1;
-
     static void newS () {
         scene.Scene scene = new scene.Scene();
 
@@ -23,8 +20,9 @@ public class Main {
                 .setObjPlace(new TargetPlace().builder().addRelativeObject(new SimpleObjectBuilder().defaultBuild()).addPlaceName("123").build())
                 .setObjActions(new Action[]{new UnknownAction(), new TargetAction("прыгать", "на", plate1)})
                 .build();
-        //System.out.println(plate1.text());
-        //System.out.println(plate2.text());
+
+        System.out.println(plate1.text());
+        System.out.println(plate2.text());
     }
     public static void main(String[] args) {
 

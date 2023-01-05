@@ -2,6 +2,7 @@ package object;
 
 import action.Action;
 import action.UnknownAction;
+import annotation.GetPublicThings;
 import place.GeneralPlace;
 import place.Place;
 import status.GeneralStats;

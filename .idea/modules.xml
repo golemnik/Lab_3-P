@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AnnotationProcessor/AnnotationProcessor.iml" filepath="$PROJECT_DIR$/AnnotationProcessor/AnnotationProcessor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GeneralCode/GeneralCode.iml" filepath="$PROJECT_DIR$/GeneralCode/GeneralCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab 3.iml" filepath="$PROJECT_DIR$/Lab 3.iml" />
     </modules>
   </component>
