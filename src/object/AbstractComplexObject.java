@@ -2,14 +2,14 @@ package object;
 
 import action.Action;
 import action.UnknownAction;
-import place.TargetPlace;
+import place.GeneralPlace;
 import status.GeneralStats;
 
 public abstract class AbstractComplexObject extends AbstractObject {
     private SimpleObject[] parts;
 
     {
-        this.setPlaces(new TargetPlace().builder().defualtBuild());
+        this.setPlaces(new GeneralPlace().builder().defaultBuild());
         this.setStatus(new GeneralStats().builder().defualtBuild());
         this.setActions(new Action[] {new UnknownAction()});
     }

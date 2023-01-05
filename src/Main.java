@@ -1,4 +1,5 @@
 import action.Action;
+import action.TargetAction;
 import action.UnknownAction;
 import object.*;
 import place.GeneralPlace;
@@ -18,8 +19,8 @@ public class Main {
         ComplexObject plate2 = new ComplexObjectBuilder()
                 .setObjParts(new SimpleObject[]{new SimpleObjectBuilder().defaultBuild()})
                 .setObjStatus(new GeneralStats().builder().addStatus("пухленький").build())
-                .setObjPlace(new TargetPlace().builder().addRelativeObject(table).build())
-                .setObjActions(new Action[]{new UnknownAction()})
+                .setObjPlace(new TargetPlace().builder().addRelativeObject(new SimpleObjectBuilder().defaultBuild()).addPlaceName("123").build())
+                .setObjActions(new Action[]{new UnknownAction(), new TargetAction("прыгать", "на", plate1)})
                 .build();
         System.out.println(plate1.text());
         System.out.println(plate2.text());

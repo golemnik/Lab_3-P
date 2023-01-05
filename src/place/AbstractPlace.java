@@ -1,7 +1,5 @@
 package place;
 
-import javax.swing.text.TabExpander;
-
 public abstract class AbstractPlace implements Place {
     private String place;
     private String text;
@@ -14,9 +12,7 @@ public abstract class AbstractPlace implements Place {
     protected void setPlace (String name) {this.place = name;}
     protected String getPlace () {return this.place;}
     protected void addText (String text) {
-        System.out.print(text + " -> ");
-        this.text += text + "_";
-        System.out.println(text);
+        this.text += text + " ";
     }
     protected String getText () {return text;}
 
@@ -28,7 +24,7 @@ public abstract class AbstractPlace implements Place {
         AbstractPlace place;
 
         public AbstractPlaceComponents () {
-            place = new TargetPlace();
+            place = new GeneralPlace();
         }
         public AbstractPlaceComponents addPlaceName (String placeName) {
             place.setPlace(placeName);
@@ -38,7 +34,7 @@ public abstract class AbstractPlace implements Place {
         public AbstractPlace build () {
             return place;
         }
-        public AbstractPlace defualtBuild () {
+        public AbstractPlace defaultBuild() {
             addPlaceName("где-то");
             return place;
         }

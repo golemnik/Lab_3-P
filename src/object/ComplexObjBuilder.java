@@ -1,11 +1,11 @@
 package object;
 
-import exeptions.ComplexityExeption;
+import exeptions.ComplexityException;
 
 
 public interface ComplexObjBuilder extends ObjBuilder{
     ComplexObjBuilder setObjParts (SimpleObject [] simpleObjects);
 
     @Override
-    Obj build() throws ComplexityExeption;
+    Obj build() throws ComplexityException;
 }
