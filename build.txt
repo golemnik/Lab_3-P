@@ -1,4 +1,8 @@
-javac -encoding utf8 -d "terminalOut" -classpath "out/artifacts/AnnotationProcessor_jar/AnnotationProcessor.jar" -sourcepath GeneralCode/src GeneralCode/src/main.java GeneralCode/src/object/ComplexObject.java
+javac -d "terminalOut/artifacts/AnnotationProcessor_jar" AnnotationProcessor/src/simple/*.java
+mkdir terminalOut/artifacts/AnnotationProcessor_jar/META-INF/services/
+cp AnnotationProcessor/src/META-INF/services/javax.annotation.processing.Processor terminalOut/artifacts/AnnotationProcessor_jar/META-INF/services/javax.annotation.processing.Processor
+jar cf terminalOut/artifacts/AnnotationProcessor.jar -C terminalOut/artifacts/AnnotationProcessor_jar/ .
+javac -encoding utf8 -d "terminalOut" -classpath "terminalOut/artifacts/AnnotationProcessor.jar" -sourcepath GeneralCode/src GeneralCode/src/main.java GeneralCode/src/object/ComplexObject.java
 
 выводит только для явно указанных классов во время команды javac
 после обновления процессора егонужно скомпилировать перед компиляцией оснвоного проекта
