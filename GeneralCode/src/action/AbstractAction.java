@@ -1,14 +1,28 @@
 package action;
 
-public abstract class AbstractAction {
-    private String action;
+public abstract class AbstractAction implements Action {
+    private String actionName;
+    private String text;
 
     {
-        action = "бездействует";
+        actionName = "бездействует";
     }
-    public AbstractAction () {}
-    public  void setAction (String action) {
-        this.action = action;
+    public AbstractAction() {}
+    protected void setAction (String action) {
+        this.actionName = action;
     }
-    public String getAction () {return action;}
+    protected String getActionName() {return actionName;}
+    protected void addText (String text) {
+        this.text += text + " ";
+    }
+    public String getText () {return text;}
+
+    public abstract AbstractActionBuilder builder();
+    public abstract static class AbstractActionBuilder {
+        public AbstractActionBuilder() {}
+        public abstract AbstractActionBuilder addName (String name);
+        protected abstract void formText ();
+        public abstract AbstractAction build();
+        public abstract AbstractAction defaultBuild ();
+    }
 }

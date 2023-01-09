@@ -1,7 +1,7 @@
 package object;
 
 import action.Action;
-import action.UnknownAction;
+import action.NonTargetAction;
 import place.GeneralPlace;
 import place.Place;
 import status.GeneralStats;
@@ -37,7 +37,7 @@ public class SimpleObjectBuilder implements ObjBuilder {
     public SimpleObject defaultBuild () {
         obj.setStatus(new GeneralStats().builder().defualtBuild());
         obj.setPlaces(new GeneralPlace().builder().defaultBuild());
-        obj.setActions(new Action[]{new UnknownAction()});
+        obj.setActions(new Action[]{new NonTargetAction()});
         return obj;
     };
 }

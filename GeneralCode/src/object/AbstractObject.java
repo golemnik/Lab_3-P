@@ -1,8 +1,7 @@
 package object;
 
 import action.Action;
-import action.UnknownAction;
-import annotation.GetPublicThings;
+import action.NonTargetAction;
 import place.GeneralPlace;
 import place.Place;
 import status.GeneralStats;
@@ -20,7 +19,7 @@ public abstract class AbstractObject implements Obj{
     public AbstractObject () {
         this.place = new GeneralPlace().builder().defaultBuild();
         this.status = new GeneralStats().builder().defualtBuild();
-        this.action = new Action[] {new UnknownAction()};
+        this.action = new Action[] {new NonTargetAction().builder().defaultBuild()};
     }
     public void setPlaces (Place place) {
         this.place = place;
@@ -37,7 +36,7 @@ public abstract class AbstractObject implements Obj{
     public String getFullAction () {
         String fullAction = "";
         for (int i = 0; i < action.length; i++) {
-            fullAction += action[i].act() + " ";
+            fullAction += action[i].getText() + " ";
             if (i+1 == action.length);
             else {
                 switch (i){

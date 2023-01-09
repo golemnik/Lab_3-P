@@ -16,27 +16,12 @@ public abstract class AbstractPlace implements Place {
     }
     protected String getText () {return text;}
 
-    public AbstractPlaceComponents builder () {
-        return new AbstractPlaceComponents();
-    }
+    public abstract AbstractPlaceBuilder builder ();
 
-    public class AbstractPlaceComponents {
-        AbstractPlace place;
-
-        public AbstractPlaceComponents () {
-            place = new GeneralPlace();
-        }
-        public AbstractPlaceComponents addPlaceName (String placeName) {
-            place.setPlace(placeName);
-            place.addText(place.getPlace());
-            return this;
-        }
-        public AbstractPlace build () {
-            return place;
-        }
-        public AbstractPlace defaultBuild() {
-            addPlaceName("где-то");
-            return place;
-        }
+    public abstract static class AbstractPlaceBuilder {
+        public AbstractPlaceBuilder() {}
+        public abstract AbstractPlaceBuilder addPlaceName (String placeName);
+        public abstract AbstractPlace build ();
+        public abstract AbstractPlace defaultBuild();
     }
 }

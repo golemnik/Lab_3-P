@@ -55,9 +55,9 @@ public abstract class AbstractStats implements Stats {
             return stats;
         }
         public AbstractStats defualtBuild () {
-            stats.setName("кто-то");
+            addName("кто-то");
             stats.addText(stats.getName());
-            stats.setStatus("какой-то");
+            addStatus("какой-то");
             stats.addText(stats.getStatus());
             return stats;
         }

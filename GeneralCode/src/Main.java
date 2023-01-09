@@ -1,6 +1,6 @@
 import action.Action;
 import action.TargetAction;
-import action.UnknownAction;
+import action.NonTargetAction;
 import object.*;
 import place.TargetPlace;
 import status.GeneralStats;
@@ -16,9 +16,21 @@ public class Main {
 
         ComplexObject plate2 = new ComplexObjectBuilder()
                 .setObjParts(new SimpleObject[]{new SimpleObjectBuilder().defaultBuild()})
-                .setObjStatus(new GeneralStats().builder().addStatus("пухленький").build())
-                .setObjPlace(new TargetPlace().builder().addRelativeObject(new SimpleObjectBuilder().defaultBuild()).addPlaceName("123").build())
-                .setObjActions(new Action[]{new UnknownAction(), new TargetAction("прыгать", "на", plate1)})
+                .setObjStatus(new GeneralStats().builder()
+                                .addAmount(3)
+                                .build())
+                .setObjPlace(new TargetPlace().builder()
+                                .addRelativeObject(new SimpleObjectBuilder().defaultBuild())
+                                .addPlaceName("123")
+                                .build())
+                .setObjActions(new Action[]{
+                        new NonTargetAction().builder()
+                                .defaultBuild(),
+                        new TargetAction().builder()
+                                .addTarget(plate1)
+                                .addName("прыгать")
+                                .addPreposition("на")
+                                .build()})
                 .build();
 
         System.out.println(plate1.text());
@@ -38,4 +50,6 @@ public class Main {
 // todo 2 аннотация для генерации случайного объекта
 // todo 1 передалать генерацию действия
 // todo 1.2 подумать о переносе билдера объектов во вложенный класс
+
+//todo пофиксить статус сделав абстрактный класс лишь определяющим функционал и перенести реалезацию в generalstats
 
