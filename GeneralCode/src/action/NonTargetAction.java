@@ -16,7 +16,7 @@ public class NonTargetAction extends AbstractAction {
         }
         @Override
         protected void formText () {
-
+            obj.addText(obj.getActionName());
         }
         @Override
         public NonTargetAction build() {
@@ -25,6 +25,7 @@ public class NonTargetAction extends AbstractAction {
         @Override
         public NonTargetAction defaultBuild () {
             addName("что-то делает");
+            formText();
             return obj;
         }
     }

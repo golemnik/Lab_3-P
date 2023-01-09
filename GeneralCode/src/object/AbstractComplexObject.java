@@ -2,17 +2,18 @@ package object;
 
 import action.Action;
 import action.NonTargetAction;
+import exeptions.ObjectAmountException;
 import place.GeneralPlace;
 import status.GeneralStats;
 
 public abstract class AbstractComplexObject extends AbstractObject {
     private SimpleObject[] parts;
-
-    {
+    public AbstractComplexObject() {
         this.setPlaces(new GeneralPlace().builder().defaultBuild());
         this.setStatus(new GeneralStats().builder().defualtBuild());
         this.setActions(new Action[] {new NonTargetAction()});
     }
+
     public void setParts (SimpleObject [] parts) {
         this.parts = parts;
     }

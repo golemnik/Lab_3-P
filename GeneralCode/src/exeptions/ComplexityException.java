@@ -1,7 +1,7 @@
 package exeptions;
 
 public class ComplexityException extends RuntimeException {
-    public ComplexityException(String message) {
-        super(message);
+    public ComplexityException() {
+        super("Attempt to create complex object with zero complexity");
     }
 }

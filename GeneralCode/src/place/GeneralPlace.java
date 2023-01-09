@@ -19,18 +19,25 @@ public class GeneralPlace extends AbstractPlace{
         }
         @Override
         public GeneralPlaceBuilder addPlaceName (String name) {
-            obj.setPlace(name);
-            obj.addText(obj.getPlace());
+            obj.setPlaceName(name);
             return this;
         }
+
+        @Override
+        protected void formText() {
+            obj.addText(obj.getPlaceName());
+        }
+
         @Override
         public GeneralPlace build() throws TargetException {
+            formText();
             return obj;
         }
 
         @Override
         public GeneralPlace defaultBuild () {
-            addPlaceName("что-то делает");
+            addPlaceName("где-то");
+            formText();
             return obj;
         }
     }

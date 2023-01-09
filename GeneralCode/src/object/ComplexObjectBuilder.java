@@ -1,6 +1,5 @@
 package object;
 
-
 import action.Action;
 import action.NonTargetAction;
 import exeptions.ComplexityException;
@@ -38,16 +37,16 @@ public class ComplexObjectBuilder implements ComplexObjBuilder {
         return this;
     }
     @Override
+    public ComplexObject build() throws ComplexityException {
+        if (!complexity) throw new ComplexityException();
+        return obj;
+    }
+    @Override
     public ComplexObject defaultBuild () {
         obj.setStatus(new GeneralStats().builder().defualtBuild());
         obj.setPlaces(new GeneralPlace().builder().defaultBuild());
-        obj.setActions(new Action[]{new NonTargetAction()});
+        obj.setActions(new Action[]{new NonTargetAction().builder().defaultBuild()});
         obj.setParts(new SimpleObject[]{new SimpleObjectBuilder().defaultBuild()});
         return obj;
     };
-    @Override
-    public ComplexObject build() throws ComplexityException {
-        if (!complexity) throw new ComplexityException("Attempt to create complex object with zero complexity");
-        return obj;
-    }
 }

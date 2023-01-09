@@ -1,12 +1,13 @@
 import action.Action;
 import action.TargetAction;
 import action.NonTargetAction;
+import exeptions.ObjectAmountException;
 import object.*;
 import place.TargetPlace;
 import status.GeneralStats;
 
 public class Main {
-    static void newS () {
+    static void newS () throws ObjectAmountException {
         scene.Scene scene = new scene.Scene();
 
         SimpleObject table = new SimpleObjectBuilder()
@@ -17,19 +18,19 @@ public class Main {
         ComplexObject plate2 = new ComplexObjectBuilder()
                 .setObjParts(new SimpleObject[]{new SimpleObjectBuilder().defaultBuild()})
                 .setObjStatus(new GeneralStats().builder()
-                                .addAmount(3)
+                                .addAmount(0)
                                 .build())
                 .setObjPlace(new TargetPlace().builder()
                                 .addRelativeObject(new SimpleObjectBuilder().defaultBuild())
-                                .addPlaceName("123")
+                                .addPlaceName("где-то")
                                 .build())
                 .setObjActions(new Action[]{
                         new NonTargetAction().builder()
                                 .defaultBuild(),
                         new TargetAction().builder()
                                 .addTarget(plate1)
-                                .addName("прыгать")
-                                .addPreposition("на")
+                                .addName("что-то делает")
+                                .addPreposition("с")
                                 .build()})
                 .build();
 

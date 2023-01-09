@@ -6,10 +6,20 @@ import object.SimpleObjectBuilder;
 
 public class TargetPlace extends AbstractPlace {
     AbstractObject object;
+    String preposition;
     public TargetPlace() {
     }
     private void setRelativeObject (AbstractObject relativeObject) {
         object = relativeObject;
+    }
+    private AbstractObject getRelativeObject () {
+        return object;
+    }
+    private void setPreposition(String preposition) {
+        this.preposition = preposition;
+    }
+    private String getPreposition () {
+        return this.preposition;
     }
     @Override
     public String text() {
@@ -27,8 +37,8 @@ public class TargetPlace extends AbstractPlace {
         }
         @Override
         public TargetPlaceBuilder addPlaceName (String name) {
-            obj.setPlace(name);
-            obj.addText(obj.getPlace());
+            obj.setPlaceName(name);
+            obj.addText(obj.getPlaceName());
             return this;
         }
         public TargetPlaceBuilder addRelativeObject (AbstractObject relativeObject) {
@@ -37,6 +47,16 @@ public class TargetPlace extends AbstractPlace {
             targeted = true;
             return this;
         }
+        public TargetPlaceBuilder addPreposition (String preposition) {
+            obj.setPreposition(preposition);
+            return this;
+        }
+
+        @Override
+        protected void formText() {
+            obj.addText(obj.getPlaceName() + " " + obj.getPreposition() + " " + obj.getRelativeObject().getFullStatus());
+        }
+
         @Override
         public TargetPlace build() throws TargetException {
             if (!targeted) {
@@ -46,8 +66,9 @@ public class TargetPlace extends AbstractPlace {
         }
         @Override
         public TargetPlace defaultBuild () {
-            addPlaceName("что-то делает");
+            addPreposition("около");
             addRelativeObject(new SimpleObjectBuilder().defaultBuild());
+            formText();
             return obj;
         }
     }

@@ -3,11 +3,9 @@ package action;
 public abstract class AbstractAction implements Action {
     private String actionName;
     private String text;
-
-    {
-        actionName = "бездействует";
+    public AbstractAction() {
+        text = "";
     }
-    public AbstractAction() {}
     protected void setAction (String action) {
         this.actionName = action;
     }

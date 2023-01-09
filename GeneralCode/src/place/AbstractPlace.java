@@ -1,16 +1,16 @@
 package place;
 
 public abstract class AbstractPlace implements Place {
-    private String place;
+    private String placeName;
     private String text;
     {
-        place = "";
+        placeName = "где-то";
         text = "";
     }
     public AbstractPlace () {}
 
-    protected void setPlace (String name) {this.place = name;}
-    protected String getPlace () {return this.place;}
+    protected void setPlaceName(String name) {this.placeName = name;}
+    protected String getPlaceName() {return this.placeName;}
     protected void addText (String text) {
         this.text += text + " ";
     }
@@ -21,6 +21,7 @@ public abstract class AbstractPlace implements Place {
     public abstract static class AbstractPlaceBuilder {
         public AbstractPlaceBuilder() {}
         public abstract AbstractPlaceBuilder addPlaceName (String placeName);
+        protected abstract void formText ();
         public abstract AbstractPlace build ();
         public abstract AbstractPlace defaultBuild();
     }
