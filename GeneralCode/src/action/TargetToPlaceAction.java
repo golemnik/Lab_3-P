@@ -21,7 +21,7 @@ public class TargetToPlaceAction extends TargetAction{
     public TargetToPlceActionBuilder builder(){
         return new TargetToPlceActionBuilder();
     }
-    public static class TargetToPlceActionBuilder extends TargetActionBuilder {
+    public class TargetToPlceActionBuilder extends TargetActionBuilder {
         private final TargetToPlaceAction obj;
         private boolean placemented = false;
         // update target!
@@ -40,9 +40,11 @@ public class TargetToPlaceAction extends TargetAction{
             obj.addText(obj.getActionName() + " " + obj.getTarget().getFullStatus() + " " + obj.getPreposition() + " " + obj.getTargetPlace().text());
         }
 
-        public void addTargetPlace (Place place) {
+        public TargetToPlceActionBuilder addTargetPlace (Place place) {
             obj.setTargetPlace(place);
+            obj.getTarget().setPlaces(place);
             this.placemented = true;
+            return this;
         }
 
         @Override
@@ -59,8 +61,8 @@ public class TargetToPlaceAction extends TargetAction{
 
         @Override
         public TargetAction defaultBuild () {
-            addName("что-то делает");
-            addPreposition("с");
+            addName("переместил");
+            addPreposition("в");
             addTarget(new SimpleObjectBuilder().defaultBuild());
             addTargetPlace(new GeneralPlace().builder().defaultBuild());
             formText();

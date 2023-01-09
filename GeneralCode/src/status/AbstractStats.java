@@ -1,7 +1,5 @@
 package status;
 
-import exeptions.ObjectAmountException;
-
 public abstract class AbstractStats implements Stats {
     private String text;
     private String objectStatus;
@@ -25,50 +23,19 @@ public abstract class AbstractStats implements Stats {
     public String getText () {return text;}
 
     public void setAmount (int amount) {this.amount = amount;}
-    public String getAmount () {
+    public String getStrAmount() {
         return String.valueOf(amount);
     }
 
-    public AbstractStatusComponents builder () {
-        return new AbstractStatusComponents();
-    };
+    public abstract AbstractStatusBuilder builder ();
 
-    public class AbstractStatusComponents {
-        private final AbstractStats stats;
-        public AbstractStatusComponents () {
-            stats = new GeneralStats();
-        }
-        public AbstractStatusComponents addName (String name) {
-            stats.setName(name);
-            return this;
-        }
-        public AbstractStatusComponents addAmount (int amount) throws ObjectAmountException {
-            if (amount < 0) {
-                throw new ObjectAmountException();
-            }
-            stats.setAmount(amount);
-            return this;
-        }
-        public AbstractStatusComponents addStatus (String status) {
-            stats.setStatus(status);
-            return this;
-        }
-        protected void formText () {
-            stats.addText(stats.getAmount());
-            stats.addText(stats.getCondition());
-            stats.addText(stats.getName());
-        }
-        public AbstractStats build () {
-            formText();
-            return stats;
-        }
-        public AbstractStats defualtBuild () {
-            addName("кто-то");
-            addStatus("какой-то");
-            addAmount(1);
-            formText();
-            return stats;
-        }
+    public abstract static class AbstractStatusBuilder {
+        public abstract AbstractStatusBuilder addName (String name);
+        public abstract AbstractStatusBuilder addAmount (int amount);
+        public abstract AbstractStatusBuilder addStatus (String status);
+        protected abstract void formText ();
+        public abstract AbstractStats build ();
+        public abstract AbstractStats defualtBuild ();
     }
 
 }

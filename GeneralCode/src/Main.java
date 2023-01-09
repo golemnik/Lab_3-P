@@ -1,11 +1,15 @@
 import action.Action;
 import action.TargetAction;
 import action.NonTargetAction;
+import action.TargetToPlaceAction;
+import annotation.GetPublicThings;
 import exeptions.ObjectAmountException;
 import object.*;
+import place.GeneralPlace;
 import place.TargetPlace;
 import status.GeneralStats;
 
+@GetPublicThings
 public class Main {
     static void newS () throws ObjectAmountException {
         scene.Scene scene = new scene.Scene();
@@ -14,6 +18,8 @@ public class Main {
                 .setObjStatus(new GeneralStats().builder().defualtBuild())
                 .build();
         ComplexObject plate1 = new ComplexObjectBuilder().defaultBuild();
+
+        System.out.println(plate1.text());
 
         ComplexObject plate2 = new ComplexObjectBuilder()
                 .setObjParts(new SimpleObject[]{new SimpleObjectBuilder().defaultBuild()})
@@ -27,7 +33,8 @@ public class Main {
                 .setObjActions(new Action[]{
                         new NonTargetAction().builder()
                                 .defaultBuild(),
-                        new TargetAction().builder()
+                        new TargetToPlaceAction().builder()
+                                .addTargetPlace(new GeneralPlace().builder().defaultBuild())
                                 .addTarget(plate1)
                                 .addName("что-то делает")
                                 .addPreposition("с")

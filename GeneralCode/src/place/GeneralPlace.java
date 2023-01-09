@@ -14,7 +14,7 @@ public class GeneralPlace extends AbstractPlace{
 
     public static class GeneralPlaceBuilder extends AbstractPlaceBuilder {
         private final GeneralPlace obj;
-        GeneralPlaceBuilder() {
+        public GeneralPlaceBuilder() {
             obj = new GeneralPlace();
         }
         @Override

@@ -5,8 +5,8 @@ import object.AbstractObject;
 import object.SimpleObjectBuilder;
 
 public class TargetPlace extends AbstractPlace {
-    AbstractObject object;
-    String preposition;
+    private AbstractObject object;
+    private String preposition;
     public TargetPlace() {
     }
     private void setRelativeObject (AbstractObject relativeObject) {
