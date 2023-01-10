@@ -2,6 +2,8 @@ package place;
 
 public abstract class AbstractPlace implements Place {
     private String placeName;
+
+    private String preposition;
     private String text;
     {
         placeName = "где-то";
@@ -11,6 +13,12 @@ public abstract class AbstractPlace implements Place {
 
     protected void setPlaceName(String name) {this.placeName = name;}
     protected String getPlaceName() {return this.placeName;}
+    protected void setPreposition(String preposition) {
+        this.preposition = preposition;
+    }
+    protected String getPreposition () {
+        return this.preposition;
+    }
     protected void addText (String text) {
         this.text += text + " ";
     }
@@ -21,6 +29,8 @@ public abstract class AbstractPlace implements Place {
     public abstract static class AbstractPlaceBuilder {
         public AbstractPlaceBuilder() {}
         public abstract AbstractPlaceBuilder addPlaceName (String placeName);
+
+        public abstract AbstractPlaceBuilder addPreposition (String preposition);
         protected abstract void formText ();
         public abstract AbstractPlace build ();
         public abstract AbstractPlace defaultBuild();

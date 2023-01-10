@@ -6,14 +6,7 @@ import object.SimpleObjectBuilder;
 
 public class TargetAction extends AbstractAction {
     private AbstractObject target;
-    private String preposition;
     public TargetAction () {
-    }
-    protected void setPreposition(String preposition) {
-        this.preposition = preposition;
-    }
-    protected String getPreposition() {
-        return this.preposition;
     }
 
     protected void setTarget (AbstractObject target) {
@@ -41,7 +34,7 @@ public class TargetAction extends AbstractAction {
         }
         @Override
         public TargetActionBuilder addName (String name) {
-            obj.setAction(name);
+            obj.setActionName(name);
             return this;
         }
         public TargetActionBuilder addPreposition (String preposition) {
@@ -73,5 +66,4 @@ public class TargetAction extends AbstractAction {
             return obj;
         }
     }
-
 }

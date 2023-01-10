@@ -24,10 +24,15 @@ public class GeneralPlace extends AbstractPlace{
         }
 
         @Override
-        protected void formText() {
-            obj.addText(obj.getPlaceName());
+        public AbstractPlaceBuilder addPreposition(String preposition) {
+            obj.setPreposition(preposition);
+            return this;
         }
 
+        @Override
+        protected void formText() {
+            obj.addText(obj.getPreposition() + " " + obj.getPlaceName());
+        }
         @Override
         public GeneralPlace build() throws TargetException {
             formText();
@@ -37,6 +42,7 @@ public class GeneralPlace extends AbstractPlace{
         @Override
         public GeneralPlace defaultBuild () {
             addPlaceName("где-то");
+            addPreposition("");
             formText();
             return obj;
         }

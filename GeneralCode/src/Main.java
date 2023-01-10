@@ -24,7 +24,7 @@ public class Main {
         ComplexObject plate2 = new ComplexObjectBuilder()
                 .setObjParts(new SimpleObject[]{new SimpleObjectBuilder().defaultBuild()})
                 .setObjStatus(new GeneralStats().builder()
-                                .addAmount(0)
+                                .addAmount(22)
                                 .build())
                 .setObjPlace(new TargetPlace().builder()
                                 .addRelativeObject(new SimpleObjectBuilder().defaultBuild())
@@ -34,10 +34,13 @@ public class Main {
                         new NonTargetAction().builder()
                                 .defaultBuild(),
                         new TargetToPlaceAction().builder()
-                                .addTargetPlace(new GeneralPlace().builder().defaultBuild())
                                 .addTarget(plate1)
-                                .addName("что-то делает")
-                                .addPreposition("с")
+                                .addTargetPlace(new GeneralPlace().builder()
+                                        .addPreposition("")
+                                        .addPlaceName("луна")
+                                        .build())
+                                .addName("отправляет")
+                                .addPreposition("на")
                                 .build()})
                 .build();
 

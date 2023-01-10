@@ -5,8 +5,7 @@ import object.AbstractObject;
 import object.SimpleObjectBuilder;
 
 public class TargetPlace extends AbstractPlace {
-    private AbstractObject object;
-    private String preposition;
+    public AbstractObject object;
     public TargetPlace() {
     }
     private void setRelativeObject (AbstractObject relativeObject) {
@@ -14,12 +13,6 @@ public class TargetPlace extends AbstractPlace {
     }
     private AbstractObject getRelativeObject () {
         return object;
-    }
-    private void setPreposition(String preposition) {
-        this.preposition = preposition;
-    }
-    private String getPreposition () {
-        return this.preposition;
     }
     @Override
     public String text() {
@@ -47,6 +40,7 @@ public class TargetPlace extends AbstractPlace {
             targeted = true;
             return this;
         }
+        @Override
         public TargetPlaceBuilder addPreposition (String preposition) {
             obj.setPreposition(preposition);
             return this;

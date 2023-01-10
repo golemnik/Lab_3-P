@@ -11,7 +11,7 @@ public class NonTargetAction extends AbstractAction {
         }
         @Override
         public NonTargetActionBuilder addName (String name) {
-            obj.setAction(name);
+            obj.setActionName(name);
             return this;
         }
         @Override
