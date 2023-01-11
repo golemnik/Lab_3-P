@@ -2,7 +2,6 @@ package object;
 
 import action.Action;
 import action.NonTargetAction;
-import exeptions.ObjectAmountException;
 import place.GeneralPlace;
 import place.Place;
 import status.GeneralStats;
@@ -19,7 +18,7 @@ public abstract class AbstractObject implements Obj{
         this.status = new GeneralStats().builder().defualtBuild();
         this.action = new Action[] {new NonTargetAction().builder().defaultBuild()};
     }
-    public void setPlaces (Place place) {
+    public void setPlace(Place place) {
         this.place = place;
     }
     public void setActions (Action [] action) {

@@ -15,6 +15,10 @@ public class NonTargetAction extends AbstractAction {
             return this;
         }
         @Override
+        protected String takeName() {
+            return obj.getActionName();
+        }
+        @Override
         protected void formText () {
             obj.addText(obj.getActionName());
         }

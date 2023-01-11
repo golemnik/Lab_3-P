@@ -1,7 +1,4 @@
-import action.Action;
-import action.TargetAction;
-import action.NonTargetAction;
-import action.TargetToPlaceAction;
+import action.*;
 import annotation.GetPublicThings;
 import exeptions.ObjectAmountException;
 import object.*;
@@ -36,11 +33,18 @@ public class Main {
                         new TargetToPlaceAction().builder()
                                 .addTarget(plate1)
                                 .addTargetPlace(new GeneralPlace().builder()
-                                        .addPreposition("")
+                                        .addPreposition("на")
                                         .addPlaceName("луна")
                                         .build())
                                 .addName("отправляет")
-                                .addPreposition("на")
+                                .addPreposition("")
+                                .build(),
+                        new MultiTargetAction().builder()
+                                .addName("достала")
+                                .addUnion("или")
+                                .addNewTargetArray(new AbstractObject[]{table, plate1})
+                                .addTarget(table)
+                                .addTarget(plate1)
                                 .build()})
                 .build();
 
@@ -48,8 +52,6 @@ public class Main {
         System.out.println(plate2.text());
     }
     public static void main(String[] args) {
-
-
         newS();
     }
 }

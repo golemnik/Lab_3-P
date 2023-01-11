@@ -9,10 +9,10 @@ public class TargetAction extends AbstractAction {
     public TargetAction () {
     }
 
-    protected void setTarget (AbstractObject target) {
+    private void setTarget (AbstractObject target) {
         this.target = target;
     }
-    protected AbstractObject getTarget() {
+    private AbstractObject getTarget() {
         return this.target;
     }
 
@@ -37,17 +37,27 @@ public class TargetAction extends AbstractAction {
             obj.setActionName(name);
             return this;
         }
+        @Override
+        protected String takeName() {
+            return obj.getActionName();
+        }
         public TargetActionBuilder addPreposition (String preposition) {
             obj.setPreposition(preposition);
             return this;
+        }
+        protected String takePreposition () {
+            return obj.getPreposition();
         }
         public TargetActionBuilder addTarget (AbstractObject target) {
             obj.setTarget(target);
             targeted = true;
             return this;
         }
+        protected AbstractObject takeTarget () {
+            return obj.getTarget();
+        }
         protected void formText () {
-            obj.addText(obj.getActionName() + " " + obj.getPreposition() + " " + obj.getTarget().getFullStatus());
+            obj.addText(takeName() + " " + takePreposition() + " " + takeTarget().getFullStatus());
         }
         @Override
         public TargetAction build () throws TargetException {

@@ -22,7 +22,7 @@ public class ComplexObjectBuilder implements ComplexObjBuilder {
     }
     @Override
     public ComplexObjectBuilder setObjPlace(Place place){
-        obj.setPlaces(place);
+        obj.setPlace(place);
         return this;
     }
     @Override
@@ -44,7 +44,7 @@ public class ComplexObjectBuilder implements ComplexObjBuilder {
     @Override
     public ComplexObject defaultBuild () {
         obj.setStatus(new GeneralStats().builder().defualtBuild());
-        obj.setPlaces(new GeneralPlace().builder().defaultBuild());
+        obj.setPlace(new GeneralPlace().builder().defaultBuild());
         obj.setActions(new Action[]{new NonTargetAction().builder().defaultBuild()});
         obj.setParts(new SimpleObject[]{new SimpleObjectBuilder().defaultBuild()});
         return obj;

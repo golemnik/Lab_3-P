@@ -16,7 +16,7 @@ public class SimpleObjectBuilder implements ObjBuilder {
 
     @Override
     public SimpleObjectBuilder setObjPlace(Place place){
-        obj.setPlaces(place);
+        obj.setPlace(place);
         return this;
     }
     @Override
@@ -36,7 +36,7 @@ public class SimpleObjectBuilder implements ObjBuilder {
     @Override
     public SimpleObject defaultBuild () {
         obj.setStatus(new GeneralStats().builder().defualtBuild());
-        obj.setPlaces(new GeneralPlace().builder().defaultBuild());
+        obj.setPlace(new GeneralPlace().builder().defaultBuild());
         obj.setActions(new Action[]{new NonTargetAction()});
         return obj;
     };

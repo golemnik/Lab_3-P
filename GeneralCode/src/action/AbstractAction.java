@@ -26,6 +26,7 @@ public abstract class AbstractAction implements Action {
     public abstract static class AbstractActionBuilder {
         public AbstractActionBuilder() {}
         public abstract AbstractActionBuilder addName (String name);
+        protected abstract String takeName ();
         protected abstract void formText ();
         public abstract AbstractAction build();
         public abstract AbstractAction defaultBuild ();

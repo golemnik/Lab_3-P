@@ -9,15 +9,12 @@ import place.Place;
 
 public class TargetToPlaceAction extends TargetAction{
     private Place targetPlace;
-    // update target!
-
     protected void setTargetPlace (Place targetPlace) {
         this.targetPlace = targetPlace;
     }
     protected Place getTargetPlace () {
         return this.targetPlace;
     }
-
     @Override
     public TargetToPlaceActionBuilder builder(){
         return new TargetToPlaceActionBuilder();
@@ -25,7 +22,6 @@ public class TargetToPlaceAction extends TargetAction{
     public class TargetToPlaceActionBuilder extends TargetActionBuilder {
         private final TargetToPlaceAction obj;
         private boolean placemented = false;
-        // update target!
         public TargetToPlaceActionBuilder() {
             obj = new TargetToPlaceAction();
         }
@@ -35,33 +31,45 @@ public class TargetToPlaceAction extends TargetAction{
         protected boolean getPlacemented () {
             return this.placemented;
         }
-        @Override
-        protected void formText() {
-            obj.addText(obj.getActionName() + " " + obj.getTarget().getFullStatus() + " " + obj.getPreposition() + " " + obj.getTargetPlace().text());
-        }
         public TargetToPlaceActionBuilder addTargetPlace (Place place) {
             obj.setTargetPlace(place);
-            obj.getTarget().setPlaces(place);
+            super.takeTarget().setPlace(place);
             setPlacemented(true);
             return this;
         }
+        protected Place takeTargetPlace () {
+            return obj.getTargetPlace();
+        }
         @Override
         public TargetToPlaceActionBuilder addName(String name) {
-            obj.setActionName(name);
+            super.addName(name);
             return this;
         }
-
+        @Override
+        protected String takeName() {
+            return super.takeName();
+        }
         @Override
         public TargetToPlaceActionBuilder addPreposition(String preposition) {
-            obj.setPreposition(preposition);
+            super.addPreposition(preposition);
             return this;
         }
-
+        @Override
+        protected String takePreposition() {
+            return super.takePreposition();
+        }
         @Override
         public TargetToPlaceActionBuilder addTarget(AbstractObject target) {
-            obj.setTarget(target);
-            setTargeted(true);
+            super.addTarget(target);
             return this;
+        }
+        @Override
+        protected AbstractObject takeTarget() {
+            return super.takeTarget();
+        }
+        @Override
+        protected void formText() {
+            obj.addText(takeName() + " " + takeTarget().getFullStatus() + " " + takePreposition() + " " + takeTargetPlace().text());
         }
         @Override
         public TargetAction build () throws TargetException, PlacementException {

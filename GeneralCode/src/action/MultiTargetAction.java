@@ -1,76 +1,115 @@
-//package action;
-//
-//import exeptions.TargetException;
-//import object.AbstractObject;
-//import object.SimpleObjectBuilder;
-//
-//public class MultiTargetAction extends TargetAction {
-//    private AbstractObject [] targets;
-//    private String preposition;
-//    private String union;
-//    public MultiTargetAction(String action, String preposition, AbstractObject [] targets, String union) {
-//        this.setActionName(action);
-//        this.targets = targets;
-//        this.preposition = preposition;
-//        this.union = union;
-//    }
-//
-//    protected void setTargets (AbstractObject [] targets) {
-//        this.targets = targets;
-//    }
-//    protected AbstractObject[] getTargets () {
-//        return targets;
-//    }
-//
-////    public String getTargetStatus () {
-////        String status = "";
-////        for (int i = 0; i < target.length; i++) {
-////            status+=target[i].getFullStatus() + " " + target[i].getFullPlace();
-////            if (i+1 < target.length) status += " " + union + " ";
-////        }
-////        return status;
-////    }
-////
-////    @Override
-////    public String act() {
-////        return this.getActionName() + " " + this.preposition + " " + this.getTargetStatus();
-////    }
-//    @Override
-//    public MultiTargetActionBuilder builder(){
-//        return new MultiTargetActionBuilder();
-//    }
-//    public static class MultiTargetActionBuilder extends TargetActionBuilder {
-//        private final MultiTargetAction obj;
-//        public MultiTargetActionBuilder() {
-//            obj = new MultiTargetAction();
-//        }
-//        @Override
-//        public MultiTargetActionBuilder addTarget (AbstractObject target) {
-//            obj.setTarget(target);
-//            // dodelat
-//            if (obj.getTargets().length >= 2) {
-//                setTargeted(true);
-//            }
-//            return this;
-//        }
-//        protected void formText () {
-//            obj.addText(obj.getActionName() + " " + obj.getPreposition() + " " + obj.getTarget().getFullStatus());
-//        }
-//        @Override
-//        public MultiTargetAction build () throws TargetException {
-//            if (!getTargeted()) {
-//                throw new TargetException();
-//            }
-//            formText();
-//            return obj;
-//        }
-//        @Override
-//        public MultiTargetAction defaultBuild () {
-//            addName("что-то делает");
-//            addPreposition("с");
-//            addTarget(new SimpleObjectBuilder().defaultBuild());
-//            formText();
-//            return obj;
-//        }
-//    }
-//}
+package action;
+
+import exeptions.TargetException;
+import object.AbstractObject;
+import object.SimpleObjectBuilder;
+public class MultiTargetAction extends TargetAction {
+    private AbstractObject [] targets;
+    private String union;
+    {
+        targets = new AbstractObject[0];
+        setActionName("");
+        setPreposition("");
+        setUnion("");
+    }
+    protected void setTargets (AbstractObject [] targets) {
+        this.targets = targets;
+    }
+    protected AbstractObject[] getTargets () {
+        return targets;
+    }
+    protected void setUnion(String union) {
+        this.union = union;
+    }
+    protected String getUnion() {
+        return this.union;
+    }
+    @Override
+    public MultiTargetActionBuilder builder(){
+        return new MultiTargetActionBuilder();
+    }
+    public static class MultiTargetActionBuilder extends TargetActionBuilder {
+        private final MultiTargetAction obj;
+        public MultiTargetActionBuilder() {
+            obj = new MultiTargetAction();
+        }
+        @Override
+        public MultiTargetActionBuilder addName(String name) {
+            obj.setActionName(name);
+            return this;
+        }
+        @Override
+        protected String takeName() {
+            return super.takeName();
+        }
+        @Override
+        public MultiTargetActionBuilder addPreposition(String preposition) {
+            obj.setPreposition(preposition);
+            return this;
+        }
+        @Override
+        protected String takePreposition() {
+            return super.takePreposition();
+        }
+        public MultiTargetActionBuilder addUnion(String union) {
+            obj.setUnion(union);
+            return this;
+        }
+        protected String takeUnion () {
+            return obj.getUnion();
+        }
+        protected AbstractObject takeTargets(int n) {
+            return obj.getTargets()[n];
+        }
+        @Override
+        public MultiTargetActionBuilder addTarget (AbstractObject target) {
+            obj.setTargets(new MultiTargetAction() {
+                private final AbstractObject[] tempArray = new AbstractObject[obj.getTargets().length+1];
+                public AbstractObject[] addUpdater(AbstractObject addableObject) {
+                    for (int i = 0; i < obj.getTargets().length;i++) {
+                        tempArray[i] = obj.getTargets()[i];
+                    }
+                    tempArray[tempArray.length-1] = addableObject;
+                    return tempArray;
+                }
+            }.addUpdater(target));
+            if (obj.getTargets().length >= 2) {
+                setTargeted(true);
+            }
+            return this;
+        }
+        public MultiTargetActionBuilder addNewTargetArray (AbstractObject[] targets) {
+            obj.setTargets(targets);
+            if (obj.getTargets().length >= 2) {
+                setTargeted(true);
+            }
+            return this;
+        }
+        protected void formText () {
+            obj.addText(obj.getActionName() + " ");
+            for (int i = 0; i < obj.getTargets().length; i++) {
+                obj.addText(takeTargets(i).getFullStatus() + " ");
+                if (i != obj.getTargets().length-1) {
+                    obj.addText(takeUnion() + " ");
+                }
+            }
+            obj.addText(obj.getPreposition());
+        }
+        @Override
+        public MultiTargetAction build () throws TargetException {
+            if (!getTargeted()) {
+                throw new TargetException();
+            }
+            formText();
+            return obj;
+        }
+        @Override
+        public MultiTargetAction defaultBuild () {
+            addName("что-то делает");
+            addPreposition("с");
+            addTarget(new SimpleObjectBuilder().defaultBuild());
+            formText();
+            return obj;
+        }
+    }
+}
