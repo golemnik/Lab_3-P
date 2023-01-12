@@ -15,7 +15,6 @@ public class TargetAction extends AbstractAction {
     private AbstractObject getTarget() {
         return this.target;
     }
-
     @Override
     public TargetActionBuilder builder(){
         return new TargetActionBuilder();

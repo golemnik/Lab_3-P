@@ -4,6 +4,11 @@ public abstract class AbstractAction implements Action {
     private String actionName;
     private String preposition;
     private String text;
+    {
+        actionName = "";
+        preposition = "";
+        text = "";
+    }
     public AbstractAction() {
         text = "";
     }

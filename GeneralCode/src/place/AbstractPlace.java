@@ -2,11 +2,11 @@ package place;
 
 public abstract class AbstractPlace implements Place {
     private String placeName;
-
     private String preposition;
     private String text;
     {
-        placeName = "где-то";
+        placeName = "";
+        preposition = "";
         text = "";
     }
     public AbstractPlace () {}

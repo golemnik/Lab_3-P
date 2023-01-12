@@ -8,9 +8,7 @@ public class MultiTargetAction extends TargetAction {
     private String union;
     {
         targets = new AbstractObject[0];
-        setActionName("");
-        setPreposition("");
-        setUnion("");
+        union = "";
     }
     protected void setTargets (AbstractObject [] targets) {
         this.targets = targets;
@@ -58,12 +56,12 @@ public class MultiTargetAction extends TargetAction {
         protected String takeUnion () {
             return obj.getUnion();
         }
-        protected AbstractObject takeTargets(int n) {
+        protected AbstractObject takeTarget_n(int n) {
             return obj.getTargets()[n];
         }
         @Override
         public MultiTargetActionBuilder addTarget (AbstractObject target) {
-            obj.setTargets(new MultiTargetAction() {
+            obj.setTargets(new MultiTargetActionBuilder() {
                 private final AbstractObject[] tempArray = new AbstractObject[obj.getTargets().length+1];
                 public AbstractObject[] addUpdater(AbstractObject addableObject) {
                     for (int i = 0; i < obj.getTargets().length;i++) {
@@ -78,17 +76,24 @@ public class MultiTargetAction extends TargetAction {
             }
             return this;
         }
-        public MultiTargetActionBuilder addNewTargetArray (AbstractObject[] targets) {
+        @Override
+        protected AbstractObject takeTarget () {
+            return super.takeTarget();
+        }
+        public MultiTargetActionBuilder addTargetArray(AbstractObject[] targets) {
             obj.setTargets(targets);
             if (obj.getTargets().length >= 2) {
                 setTargeted(true);
             }
             return this;
         }
+        public AbstractObject[] takeTargetArray () {
+            return obj.getTargets();
+        }
         protected void formText () {
             obj.addText(obj.getActionName() + " ");
             for (int i = 0; i < obj.getTargets().length; i++) {
-                obj.addText(takeTargets(i).getFullStatus() + " ");
+                obj.addText(takeTarget_n(i).getFullStatus() + " ");
                 if (i != obj.getTargets().length-1) {
                     obj.addText(takeUnion() + " ");
                 }

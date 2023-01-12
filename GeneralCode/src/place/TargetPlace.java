@@ -5,14 +5,14 @@ import object.AbstractObject;
 import object.SimpleObjectBuilder;
 
 public class TargetPlace extends AbstractPlace {
-    public AbstractObject object;
+    private AbstractObject target;
     public TargetPlace() {
     }
     private void setRelativeObject (AbstractObject relativeObject) {
-        object = relativeObject;
+        this.target = relativeObject;
     }
     private AbstractObject getRelativeObject () {
-        return object;
+        return this.target;
     }
     @Override
     public String text() {
@@ -23,7 +23,7 @@ public class TargetPlace extends AbstractPlace {
         return new TargetPlaceBuilder();
     }
     public class TargetPlaceBuilder extends AbstractPlaceBuilder {
-        private final TargetPlace obj;
+        private TargetPlace obj;
         private boolean targeted = false;
         public TargetPlaceBuilder () {
             obj = new TargetPlace();
@@ -31,12 +31,10 @@ public class TargetPlace extends AbstractPlace {
         @Override
         public TargetPlaceBuilder addPlaceName (String name) {
             obj.setPlaceName(name);
-            obj.addText(obj.getPlaceName());
             return this;
         }
         public TargetPlaceBuilder addRelativeObject (AbstractObject relativeObject) {
-            setRelativeObject(relativeObject);
-            addText("около " + relativeObject.getFullStatus());
+            obj.setRelativeObject(relativeObject);
             targeted = true;
             return this;
         }
@@ -45,10 +43,9 @@ public class TargetPlace extends AbstractPlace {
             obj.setPreposition(preposition);
             return this;
         }
-
         @Override
         protected void formText() {
-            obj.addText(obj.getPlaceName() + " " + obj.getPreposition() + " " + obj.getRelativeObject().getFullStatus());
+            obj.addText(obj.getPlaceName() + " " + obj.getPreposition() + " около " + obj.getRelativeObject().getFullStatus());
         }
 
         @Override
@@ -56,13 +53,14 @@ public class TargetPlace extends AbstractPlace {
             if (!targeted) {
                 throw new TargetException();
             }
-            return obj;
+            formText();
+            return this.obj;
         }
         @Override
         public TargetPlace defaultBuild () {
+            addPlaceName("где-то");
             addPreposition("около");
             addRelativeObject(new SimpleObjectBuilder().defaultBuild());
-            formText();
             return obj;
         }
     }
